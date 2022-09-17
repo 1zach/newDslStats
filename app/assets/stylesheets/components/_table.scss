@@ -1,0 +1,21 @@
+table {
+    position: relative !important;
+    
+}
+
+th {
+    background: white;
+    position: sticky !important;
+    top: 10px !important; /* Don't forget this, required for the stickiness */
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+  }
+
+  #players {
+      overflow-x: scroll;
+      position: absolute;
+  }
+
+  #players_name{
+      position: sticky;
+      left: 0;
+  }

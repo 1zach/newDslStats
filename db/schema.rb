@@ -10,8 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_15_150305) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "players", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+  end
+
+  create_table "seasons", force: :cascade do |t|
+    t.integer "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stats", force: :cascade do |t|
+    t.integer "season"
+    t.integer "games"
+    t.integer "atbat"
+    t.integer "runs"
+    t.integer "hits"
+    t.integer "singles"
+    t.integer "doubles"
+    t.integer "triples"
+    t.integer "homeruns"
+    t.integer "rbi"
+    t.integer "k"
+    t.integer "tb"
+    t.integer "sac"
+    t.integer "gwrbi"
+    t.float "avg"
+    t.float "obp"
+    t.float "slg"
+    t.float "ops"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "years"
+    t.bigint "season_id", null: false
+    t.bigint "player_id", null: false
+    t.index ["player_id"], name: "index_stats_on_player_id"
+    t.index ["season_id"], name: "index_stats_on_season_id"
+  end
+
+  add_foreign_key "stats", "players"
+  add_foreign_key "stats", "seasons"
 end

@@ -5,3 +5,53 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require 'csv'
+Player.destroy_all
+Season.destroy_all
+Stat.destroy_all
+
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'allStats.csv'))
+csv = CSV.parse(csv_text, headers: true, encoding: 'ISO-8859-1')
+
+csv.each do |row|    
+            player = Player.new(
+                name: row['Name']) 
+                player.save
+        end
+
+csv.each do |row|
+            season = Season.new(
+                year: row['Season']
+            )        
+            season.save
+        end
+
+csv.each do |row|
+    Stat.create(
+    games: row['G'],
+    atbat: row["AB"],
+    runs: row["R"],
+    hits: row["H"],
+    singles: row["1b"],
+    doubles: row["2b"],
+    triples: row["3b"],
+    homeruns: row["HR"],
+    rbi: row["RBI"],
+    k: row["K"],
+    tb: row["TB"],
+    sac: row["SAC"],
+    gwrbi: row["GWrbi"],
+    avg: row["Avg"],
+    obp: row["OBP"],
+    slg: row["Slg"],
+    ops: row["OPS"],
+    player_id: (Player.find_by(name: row["Name"]).id),
+    season_id: (Season.find_by(year: row["Season"]).id)
+    )
+end
+
+        puts "#{Season.all.count}"
+        puts "#{Stat.all.count}"
+
+
+puts "There are now #{Player.all.count} players in the table"
