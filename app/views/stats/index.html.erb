@@ -1,58 +1,61 @@
-
+<div class = "d-flex flex-column">
+  <div>
+    <%=render "form"%>
+  </div>
 <div id="players" class="shadow rounded border-b border-gray-200">
   <table class="table min-w-full bg-white tablesorter" id = "myTable">
   <div id = "form">
-    <thead class="bg-gray-800 text-white" >
+    <thead class="sticky top-0 bg-gray-800 text-white" >
       <tr data-controller="sort">
-        <th  id="players-name" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+        <th  id="players-name" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "Name", :sort => "name"%>
         </th>
-        <th id="players-seasons" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+        <th id="players-seasons" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "Seasons", :sort => "seasons.count"%>
         </th>
-        <th id="players-games" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+        <th id="players-games" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "G", :sort => "stats.games"%>
         </th>
-        <th id="players-atbats" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+        <th id="players-atbats" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "AB", :sort => "atbat"%>
         </th>
-        <th id="players-hits" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+        <th id="players-hits" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "H", :sort => "hits"%>
         </th>
-        <th id="players-runs" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+        <th id="players-runs" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "R", :sort => "runs"%>
         </th>
-        <th id="players-single" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+        <th id="players-single" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "1B", :sort => "singles"%>
         </th>
-        <th id="players-double" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+        <th id="players-double" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "2B", :sort => "doubles"%>
         </th>
-        <th id="players-triple" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+        <th id="players-triple" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "3B", :sort => "triples"%>
         </th>
-        <th id="players-homeruns" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+        <th id="players-homeruns" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "HR", :sort => "homeruns"%>
         </th>
-        <th id="players-rbi" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+        <th id="players-rbi" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "RBI", :sort => "rbi"%>
         </th>
-        <th id="players-k" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+        <th id="players-k" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "TB", :sort => "tb"%>
         </th>
-        <th id="players-k" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+        <th id="players-k" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "K", :sort => "k"%>
         </th>
-        <th id="players-sac" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+        <th id="players-sac" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "SAC", :sort => "sac"%>
         </th>
-        <th id="players-gwrbi" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+        <th id="players-gwrbi" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "GW", :sort => "gwrbi"%>
         </th>
-        <th id="players-avg" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+        <th id="players-avg" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "AVG", :sort => "avg"%>
         </th>
-        <th id="players-slg" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+        <th id="players-slg" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "SLG", :sort => "slg"%>
         </th>
       </tr>

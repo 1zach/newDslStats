@@ -2,7 +2,7 @@ class StatsController < ApplicationController
     
     def index 
         @stats = Stat.all
-        @filtered = Player.joins(:seasons).having("seasons.count >= 6")
+        @filtered = Player.joins(:seasons).having("seasons.count >= ?", params[:query_seasons])
         @players = Player.all
         @grouped = @filtered.group(:id)
         if params[:sort] == "seasons.count"
