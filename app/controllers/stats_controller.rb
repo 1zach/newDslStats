@@ -7,6 +7,8 @@ class StatsController < ApplicationController
         @grouped = @filtered.group(:id)
         if params[:sort] == "seasons.count"
           @sorted = @grouped.sort_by{ |player| [-player.seasons.count, -player.stats.sum(:atbat)]}
+        elsif params[:sort] == nil
+          @sorted = @grouped.sort_by{ |player| player.name}
         elsif params[:sort] == "name"
           @sorted = @grouped.sort_by{ |player| player.name}
         elsif params[:sort] == "avg"
