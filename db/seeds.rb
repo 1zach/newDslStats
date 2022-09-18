@@ -12,20 +12,20 @@ Stat.destroy_all
 
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'allStats.csv'))
 csv = CSV.parse(csv_text, headers: true, encoding: 'ISO-8859-1')
-
+puts "Statring"
 csv.each do |row|    
             player = Player.new(
                 name: row['Name']) 
                 player.save
         end
-
+puts "Created #{Player.count} players"
 csv.each do |row|
             season = Season.new(
                 year: row['Season']
             )        
             season.save
         end
-
+puts "Created #{Season.count} seasons"
 csv.each do |row|
     Stat.create(
     games: row['G'],
