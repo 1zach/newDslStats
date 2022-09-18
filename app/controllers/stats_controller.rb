@@ -1,5 +1,5 @@
 class StatsController < ApplicationController
-    require "BigDecimal"
+    
     def index 
         @stats = Stat.all
         @filtered = Player.joins(:seasons).having("seasons.count >= 6")
