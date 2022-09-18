@@ -2,13 +2,13 @@
   <div>
     <%=render "form"%>
   </div>
-<div id="players" class="shadow rounded border-b border-gray-200">
+<div id="players", class= "shadow rounded border-b border-gray-200" do >
   <table class="table min-w-full bg-white tablesorter" id = "myTable">
   <div id = "form">
     <thead class="sticky top-0 bg-gray-800 text-white" >
       <tr data-controller="sort">
         <th  id="players-name" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
-          <%= link_to "Name", :sort => "name"%>
+          <%= link_to "Name", :sort=>"name"%>
         </th>
         <th id="players-seasons" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "Seasons", :sort => "seasons.count"%>

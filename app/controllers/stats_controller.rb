@@ -2,8 +2,12 @@ class StatsController < ApplicationController
     
     def index 
         @stats = Stat.all
-        @filtered = Player.joins(:seasons).having("seasons.count >= ?", params[:query_seasons])
         @players = Player.all
+        if params[:query_seasons]
+          @filtered = Player.joins(:seasons).having("seasons.count >= ?", params[:query_seasons])
+        else
+          @filtered = Player.joins(:seasons).having("seasons.count >= ?", 6)
+        end
         @grouped = @filtered.group(:id)
         if params[:sort] == "seasons.count"
           @sorted = @grouped.sort_by{ |player| [-player.seasons.count, -player.stats.sum(:atbat)]}
@@ -20,7 +24,6 @@ class StatsController < ApplicationController
         else
           @sorted = Player.all
         end
-        #@players = Player.group(:id).order(params[:sort])
         
     end
 
