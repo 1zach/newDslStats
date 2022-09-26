@@ -2,61 +2,64 @@
   <div>
     <%=render "form"%>
   </div>
+ <!-- <div>
+    <%=render "previous_season_form"%>
+  </div> -->
 <div id="players", class= "shadow rounded border-b border-gray-200" do >
   <table class="table min-w-full bg-white tablesorter" id = "myTable">
   <div id = "form">
     <thead class="sticky top-0 bg-gray-800 text-white" >
       <tr data-controller="sort">
         <th  id="players-name" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
-          <%= link_to "Name", :sort=>"name"%>
+          <%= link_to "Name", sort: "name", query_seasons: params[:query_seasons]%>
         </th>
         <th id="players-seasons" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
-          <%= link_to "Seasons", :sort => "seasons.count"%>
+          <%= link_to "Seasons", sort: "seasons.count", query_seasons: params[:query_seasons]%>
         </th>
         <th id="players-games" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
-          <%= link_to "G", :sort => "stats.games"%>
+          <%= link_to "G", sort: "stats.games", query_seasons: params[:query_seasons]%>
         </th>
         <th id="players-atbats" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
-          <%= link_to "AB", :sort => "atbat"%>
+          <%= link_to "AB", :sort => "atbat", query_seasons: params[:query_seasons]%>
         </th>
         <th id="players-hits" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
-          <%= link_to "H", :sort => "hits"%>
+          <%= link_to "H", :sort => "hits", query_seasons: params[:query_seasons]%>
         </th>
         <th id="players-runs" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
-          <%= link_to "R", :sort => "runs"%>
+          <%= link_to "R", :sort => "runs", query_seasons: params[:query_seasons]%>
         </th>
         <th id="players-single" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
-          <%= link_to "1B", :sort => "singles"%>
+          <%= link_to "1B", :sort => "singles", query_seasons: params[:query_seasons]%>
         </th>
         <th id="players-double" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
-          <%= link_to "2B", :sort => "doubles"%>
+          <%= link_to "2B", :sort => "doubles", query_seasons: params[:query_seasons]%>
         </th>
         <th id="players-triple" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
-          <%= link_to "3B", :sort => "triples"%>
+          <%= link_to "3B", :sort => "triples", query_seasons: params[:query_seasons]%>
         </th>
         <th id="players-homeruns" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
-          <%= link_to "HR", :sort => "homeruns"%>
+          <%= link_to "HR", :sort => "homeruns", query_seasons: params[:query_seasons]%>
         </th>
         <th id="players-rbi" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
-          <%= link_to "RBI", :sort => "rbi"%>
+          <%= link_to "RBI", :sort => "rbi", query_seasons: params[:query_seasons]%>
         </th>
         <th id="players-k" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
-          <%= link_to "TB", :sort => "tb"%>
+          <%= link_to "TB", :sort => "tb", query_seasons: params[:query_seasons]%>
         </th>
         <th id="players-k" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
-          <%= link_to "K", :sort => "k"%>
+          <%= link_to "K", :sort => "k", query_seasons: params[:query_seasons]%>
         </th>
         <th id="players-sac" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
-          <%= link_to "SAC", :sort => "sac"%>
+          <%= link_to "SAC", :sort => "sac", query_seasons: params[:query_seasons]%>
         </th>
         <th id="players-gwrbi" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
-          <%= link_to "GW", :sort => "gwrbi"%>
+          <%= link_to "GW", :sort => "gwrbi", query_seasons: params[:query_seasons]%>
         </th>
         <th id="players-avg" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
-          <%= link_to "AVG", :sort => "avg"%>
+          <%= link_to "AVG", :sort => "avg", query_seasons: params[:query_seasons]%>
         </th>
         <th id="players-slg" class="bg-gray-800 sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
-          <%= link_to "SLG", :sort => "slg"%>
+          <%= link_to "SLG", :sort => "slg", query_seasons: params[:query_seasons]%>
         </th>
       </tr>
     </thead>
