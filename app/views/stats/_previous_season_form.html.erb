@@ -1,7 +1,7 @@
 <%= form_with url: stats_path, method: :get, class: "d-flex pb-2", data: {"turbo": false} do %>
-      <label for="Players with at least 'X' seasons"></label>
-      <label for="seasons" class = "pr-3">Seasons in the DSL</label>
-      <select name="query_seasons" id="seasons" class = "pl-4 background-position-0">
+      <label for="Previous seasons"></label>
+      <label for="seasons" class = "pr-3">How many seasons back?</label>
+      <select name="previous_seasons" id="seasons" class = "pl-4 background-position-0">
         <option value="8">8</option>
         <option value="7">7</option>
         <option value="6">6</option>
@@ -11,7 +11,5 @@
         <option value="2">2</option>
         <option value="1">1</option>
       </select>
- 
-
       <%= submit_tag "Search", class: "ml-3 px-2 border-2 bg-gray-800 border-gray-800 hover:bg-gray-600 text-white"%>
   <% end %>
