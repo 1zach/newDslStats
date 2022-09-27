@@ -1,7 +1,11 @@
 <%= form_with url: stats_path, method: :get, class: "d-flex pb-2", data: {"turbo": false} do %>
-      <label for="Players with at least 'X' seasons"></label>
-      <label for="seasons" class = "pr-3">Seasons in the DSL</label>
-      <select name="query_seasons" id="seasons" class = "pl-4 background-position-0">
+      <label for="Players with at least 'X' seasons">Players with at least</label>
+      
+      
+      
+      <div class="relative inline-flex self-center">
+       
+      <select name="query_seasons" id="seasons" class = "font-medium rounded border-2 border-[#50AE26] text-gray-600 h-7 w-20 pl-3 pr-3 mx-3 bg-white hover:border-gray-400 focus:outline-none appearance-none after:outline-none">
         <option value="8">8</option>
         <option value="7">7</option>
         <option value="6">6</option>
@@ -11,7 +15,8 @@
         <option value="2">2</option>
         <option value="1">1</option>
       </select>
+      <label for="seasons" class = "">seasons in the DSL</label>
  
 
-      <%= submit_tag "Search", class: "ml-3 px-2 border-2 bg-gray-800 border-gray-800 hover:bg-gray-600 text-white"%>
+      <%= submit_tag "Search", class: "mx-3 px-2 border-1 bg-[#50AE26] border-gray-800 hover:bg-gray-600 text-white"%>
   <% end %>
