@@ -46,6 +46,7 @@ csv.each do |row|
     obp: row["OBP"],
     slg: row["Slg"],
     ops: row["OPS"],
+    years: row["Season"],
     player_id: (Player.find_by(name: row["Name"]).id),
     season_id: (Season.find_by(year: row["Season"]).id)
     )

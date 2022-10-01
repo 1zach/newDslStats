@@ -6,17 +6,17 @@ class StatsController < ApplicationController
         @players = Player.all
         if params[:query_seasons]
           @filtered = Player.joins(:seasons).having("seasons.count >= ?", params[:query_seasons])
-        elsif params[:previous_seasons]
-          @filtered = Player.joins(:seasons).where("seasons.includes(year = 2015)")
         else
           @filtered = Player.joins(:seasons).having("seasons.count >= ?", 6)
         end
         @grouped = @filtered.group(:id)
         if params[:sort] == "seasons.count"
           if params[:order] == "asc"
-            @sorted = @grouped.sort_by{ |player| [-player.seasons.count, -player.stats.sum(:atbat)]}
+            @stated = @grouped.sort_by{ |player| [-player.seasons.count, -player.stats.sum(:atbat)]}
+            @sorted = @stated.first(10)
           else 
-            @sorted = @grouped.sort_by{ |player| [player.seasons.count, player.stats.sum(:atbat)]}
+            @stated = @grouped.sort_by{ |player| [player.seasons.count, player.stats.sum(:atbat)]}
+            @sorted = @stated.first(10)
           end
         elsif params[:sort] == nil
           @sorted = @grouped.sort_by{ |player| player.name}
@@ -67,26 +67,7 @@ class StatsController < ApplicationController
         @stat = Stat.find(params[:id])
     end
 
-
-    def query
-      @filtered = Player.joins(:seasons).having("seasons.count >= ?", params[:query_seasons])
-    #   @grouped = @filtered.group(:id)
-    #     if params[:sort] == "seasons.count"
-    #       @sorted = @grouped.sort_by{ |player| [-player.seasons.count, -player.stats.sum(:atbat)]}
-    #     elsif params[:sort] == nil
-    #       @sorted = @grouped.sort_by{ |player| player.name}
-    #     elsif params[:sort] == "name"
-    #       @sorted = @grouped.sort_by{ |player| player.name}
-    #     elsif params[:sort] == "avg"
-    #       @sorted = @grouped.sort_by{ |player| -average(player)}
-    #     elsif params[:sort] == "slg"
-    #       @sorted = @grouped.sort_by{ |player| -slugging(player)}
-    #     elsif params[:sort] != "seasons.count"
-    #       @sorted = @grouped.sort_by{ |player| -player.stats.sum(params[:sort])}
-    #     else
-    #       @sorted = Player.all
-    #     end
-    end
+private
 
     def average(player)
       if player.stats.sum(:hits) == 0 || player.stats.sum(:atbat) == 0

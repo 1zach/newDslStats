@@ -1,7 +1,5 @@
 module StatsHelper
 
-
-
 def average(player)
     if player.stats.sum(:hits) == 0 || player.stats.sum(:atbat) == 0
         return 0.00

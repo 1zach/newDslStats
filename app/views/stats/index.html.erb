@@ -1,8 +1,7 @@
 
 
-
-
 <div class = "d-flex flex-column">
+  <h2 class = "py-4">You are seeing players with at least <%=params[:query_seasons]%>  seasons in the DSL, sorted by <%=params[:sort]%></h2>
   <div>
     <%=render "form"%>
   </div>
@@ -96,8 +95,6 @@
           <td class="text-left py-1 px-2"><%= slugging(player).to_s %></td>
           <td class="text-left py-1 px-2"><%= onbase(player).to_s %></td>
           <td class="text-left py-1 px-2"><%= ops(player).to_s %></td>
-          
-          
         </tr>
         
       <% end %>

@@ -19,8 +19,12 @@
 
   <body>
   
-  <div class = "bg-[#50AE26] pl-6 font-semibold"><%=image_tag("fg.png", size: "40x40", class: "inline-block")%>DSL<span class = "text-white">GRAPHS</span></div>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <div class = "bg-[#50AE26] pl-6 font-semibold"><%=image_tag("fg.png", size: "40x40", class: "inline-block")%>DSL<span class = "text-white">GRAPHS</span>
+  <%=link_to "Stats", stats_path%>
+  <%=link_to "Seasons", seasons_path%>
+  <%=link_to "Eras", eras_path%>
+  </div>
+    <main class="container mx-auto mt-7 px-5 flex">
       <%= yield %>
 
       

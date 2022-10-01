@@ -1,0 +1,104 @@
+<div class = "d-flex flex-column">
+  <h2 class = "py-4">You are seeing players who played in one of these years <%=years(params[:years])%> sorted by <%=params[:sort]%></h2>
+  <div>
+    <%=render "eras_form"%>
+  </div>
+<div id="players", class= "shadow rounded border-b border-gray-200" do >
+  <table class="table min-w-full bg-white tablesorter" id = "myTable">
+  <div id = "form">
+    <thead class="sticky top-0 bg-[#50AE26] text-white" >
+      <tr data-controller="sort">
+        <th  id="players-name" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "Name", sort: "name", years: params[:years], order: sortable%>
+        </th>
+        <th id="players-seasons" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "Seasons", sort: "seasons.count", years: params[:years], order: sortable%>
+        </th>
+        <th id="players-games" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "G", sort: "stats.games", years: params[:years], order: sortable%>
+        </th>
+        <th id="players-atbats" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "AB", sort: "atbat", years: params[:years], order: sortable%>
+        </th>
+        <th id="players-hits" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "H", sort: "hits", years: params[:years], order: sortable%>
+        </th>
+        <th id="players-runs" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "R", sort: "runs", years: params[:years], order: sortable%>
+        </th>
+        <th id="players-single" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "1B", sort: "singles", years: params[:years], order: sortable%>
+        </th>
+        <th id="players-double" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "2B", sort: "doubles", years: params[:years], order: sortable%>
+        </th>
+        <th id="players-triple" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "3B", sort: "triples", years: params[:years], order: sortable%>
+        </th>
+        <th id="players-homeruns" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "HR", sort: "homeruns", years: params[:years], order: sortable%>
+        </th>
+        <th id="players-rbi" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "RBI", sort: "rbi", years: params[:years], order: sortable%>
+        </th>
+        <th id="players-k" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "TB", sort: "tb", years: params[:years], order: sortable%>
+        </th>
+        <th id="players-k" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "K", sort: "k", years: params[:years], order: sortable%>
+        </th>
+        <th id="players-sac" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "SAC", sort: "sac", years: params[:years], order: sortable%>
+        </th>
+        <th id="players-gwrbi" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "GW", sort: "gwrbi", years: params[:years], order: sortable%>
+        </th>
+        <th id="players-avg" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "AVG", sort: "avg", years: params[:years], order: sortable%>
+        </th>
+        <th id="players-slg" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "SLG", sort: "slg", years: params[:years], order: sortable%>
+        </th>
+        <th id="players-obp" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "OBP", sort: "obp", years: params[:years], order: sortable%>
+        </th>
+        <th id="players-obp" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "OPS", sort: "ops", years: params[:years], order: sortable%>
+        </th>
+      </tr>
+    </thead>
+    
+    <tbody class="text-gray-700">
+    <%= @selected%>
+      <% @grouped.each do |player| %>
+        <tr class = "hover:bg-gray-200">
+          <td class="text-left py-1 px-2" id = "players_name"><%=player[0] %></td>
+          <td class="text-left py-1 px-2" id = "players_name"><%=player[1].count %></td>
+          <td class = "text-left py-1 px-2"><%=games(player)%></td>
+          <td class = "text-left py-1 px-2"><%=atbat(player)%></td>
+          <td class = "text-left py-1 px-2"><%=hits(player)%></td>
+          <td class = "text-left py-1 px-2"><%=runs(player)%></td>
+          <td class = "text-left py-1 px-2"><%=singles(player)%></td>
+          <td class = "text-left py-1 px-2"><%=doubles(player)%></td>
+          <td class = "text-left py-1 px-2"><%=triples(player)%></td>
+          <td class = "text-left py-1 px-2"><%=homers(player)%></td>
+          <td class = "text-left py-1 px-2"><%=rbi(player)%></td>
+          <td class = "text-left py-1 px-2"><%=total_bases(player)%></td>
+          <td class = "text-left py-1 px-2"><%=k(player)%></td>
+          <td class = "text-left py-1 px-2"><%=sac(player)%></td>
+          <td class = "text-left py-1 px-2"><%=gw(player)%></td>
+          <td class = "text-left py-1 px-2"><%=avg(player)%></td>
+          <td class = "text-left py-1 px-2"><%=slg(player)%></td>
+          <td class = "text-left py-1 px-2"><%=obp(player)%></td>
+          <td class = "text-left py-1 px-2"><%=oplus(player)%></td>
+        </tr>
+        
+      <% end %>
+    </tbody>
+  </table>
+  <%=@yearParams%>
+  
+
+</div>
+</div>
+

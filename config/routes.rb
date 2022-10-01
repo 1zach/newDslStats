@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :stats
   get "/stats", to: "stats#query"
   resources :players
+  resources :seasons
+  resources :eras
   # Defines the root path route ("/")
   # root "articles#index"
 end
