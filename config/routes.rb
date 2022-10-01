@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :players
   resources :seasons
   resources :eras
+  resources :every
   # Defines the root path route ("/")
   # root "articles#index"
 end

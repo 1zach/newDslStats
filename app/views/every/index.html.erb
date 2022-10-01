@@ -1,0 +1,99 @@
+
+
+<div id="players" class="shadow rounded border-b border-gray-200">
+  <table class="table min-w-full bg-white tablesorter" id = "myTable">
+    <thead class="bg-[#50AE26] sticky top-0 text-white">
+      <tr>
+        <th id="players-name" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "Name", sort: "name"%>
+        </th>
+        <th id="players-seasons" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "Seasons", sort: "seasons.count"%>
+        </th>
+        <th id="players-games" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "G", sort: "stats.games"%>
+        </th>
+        <th id="players-atbats" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "AB", sort: "atbat"%>
+        </th>
+        <th id="players-hits" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "H", sort: "hits"%>
+        </th>
+        <th id="players-runs" class="bg-[#50AE26] text-left sticky top-0  py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "R", sort: "runs"%>
+        </th>
+        <th id="players-single" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "1B", sort: "singles"%>
+        </th>
+        <th id="players-double" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "2B", sort: "doubles"%>
+        </th>
+        <th id="players-triple" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "3B", sort: "triples"%>
+        </th>
+        <th id="players-homeruns" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "HR", sort: "homeruns"%>
+        </th>
+        <th id="players-rbi" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "RBI", sort: "rbi"%>
+        </th>
+        <th id="players-k" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "TB", sort: "tb"%>
+        </th>
+        <th id="players-k" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "K", sort: "k"%>
+        </th>
+        <th id="players-sac" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "SAC", sort: "sac"%>
+        </th>
+        <th id="players-gwrbi" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "GW", sort: "gwrbi"%>
+        </th>
+        <th id="players-avg" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "AVG", sort: "avg"%>
+        </th>
+        <th id="players-slg" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "OBP", sort: "obp"%>
+        </th>
+        <th id="players-slg" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "SLG", sort: "slg"%>
+        </th>
+        <th id="players-slg" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "OPS", sort: "ops"%>
+        </th>
+      </tr>
+    </thead>
+    
+    <tbody class="text-gray-700">
+      <% @stats.each do |player| %>
+        <tr>
+          <td class="text-left py-1 px-2" id = "players_name"><%= player.player.name %></td>
+          <td class="text-left py-1 px-2"><%= player.years %></td>
+          <td class="text-left py-1 px-2"><%= player.games %></td>
+          <td class="text-left py-1 px-2"><%= player.atbat %></td>
+          <td class="text-left py-1 px-2"><%= player.hits %></td>
+          <td class="text-left py-1 px-2"><%= player.runs %></td>
+          <td class="text-left py-1 px-2"><%= player.singles %></td>
+          <td class="text-left py-1 px-2"><%= player.doubles %></td>
+          <td class="text-left py-1 px-2"><%= player.triples %></td>
+          <td class="text-left py-1 px-2"><%= player.homeruns %></td>
+          <td class="text-left py-1 px-2"><%= player.rbi %></td>
+          <td class="text-left py-1 px-2"><%= player.tb %></td>
+          <td class="text-left py-1 px-2"><%= player.k %></td>
+          <td class="text-left py-1 px-2"><%= player.sac %></td>
+          <td class="text-left py-1 px-2"><%= player.gwrbi %></td>
+          <td class="text-left py-1 px-2"><%= player.avg %></td>
+          <td class="text-left py-1 px-2"><%= player.obp %></td>
+          <td class="text-left py-1 px-2"><%= player.slg %></td>
+          <td class="text-left py-1 px-2"><%= player.ops %></td>
+          
+        </tr>
+        
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
+
+
+
