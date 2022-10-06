@@ -4,6 +4,7 @@
     <%=render "eras_form"%>
   </div>
 <div id="players", class= "shadow rounded border-b border-gray-200" do >
+
   <table class="table min-w-full bg-white tablesorter" id = "myTable">
   <div id = "form">
     <thead class="sticky top-0 bg-[#50AE26] text-white" >
@@ -73,7 +74,7 @@
       <% @grouped.each do |player| %>
         <tr class = "hover:bg-gray-200">
           <td class="text-left py-1 px-2" id = "players_name"><%=player[0] %></td>
-          <td class="text-left py-1 px-2" id = "players_name"><%=player[1].count %></td>
+          <td class="text-left py-1 px-2" id = "players_seasons"><%=player[1].count %></td>
           <td class = "text-left py-1 px-2"><%=games(player)%></td>
           <td class = "text-left py-1 px-2"><%=atbat(player)%></td>
           <td class = "text-left py-1 px-2"><%=hits(player)%></td>

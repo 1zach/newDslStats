@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "stats#index"
+  root to: "dsl_info#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :stats
   get "/stats", to: "stats#query"
@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :seasons
   resources :eras
   resources :every
+  resources :dsl_info
   # Defines the root path route ("/")
   # root "articles#index"
 end

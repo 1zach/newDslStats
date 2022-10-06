@@ -10,7 +10,6 @@ class PlayersController < ApplicationController
         @player = Player.find(params[:id])
         @stathistory = Stat.where(player_id: params[:id])
         @stathistory = @stathistory.sort_by{ |stat| [-stat.season.year]}
-
         if params[:sort] == "year"
             @stat = @stathistory.sort_by{ |stat| [-stat.season.year]}
           elsif params[:sort] != "year"
@@ -19,7 +18,7 @@ class PlayersController < ApplicationController
           else
             @stat = @stathistory.sort_by{ |stat| [-stat.season.year]}
           end
-
+          
 
     end
 end

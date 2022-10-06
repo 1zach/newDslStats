@@ -73,7 +73,7 @@ private
       if player.stats.sum(:hits) == 0 || player.stats.sum(:atbat) == 0
           return 0.00
       else
-      (player.stats.sum(:hits).to_f / player.stats.sum(:atbat).to_f).round(3)
+      avg = (player.stats.sum(:hits).to_f / player.stats.sum(:atbat).to_f)
       end
     end
   

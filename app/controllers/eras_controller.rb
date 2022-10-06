@@ -29,14 +29,20 @@ class ErasController < ApplicationController
               .or(Stat.where("years = ?", params[:years][6])).or(Stat.where("years = ?", params[:years][7]))
             end
             
-            if params[:sort]
+            if !params[:sort]
               if params[:order] == "asc" 
                 @grouped = @players.group_by { |player| -player.player.name}
               else
                 @grouped = @players.group_by { |player| player.player.name}
               end
-            else
+            elsif params[:sort] == "seasons.count"
+              
+              #@grouped = @players.group(:id)
+              #@grouped = @grouped.group_by { |player| (player[1]).sum.atbat}
               @grouped = @players.group_by { |player| player.player.name}
+              @grouped = @grouped.sort_by { |player| [-player[1].count, player[0]]}
+              
+
             end
           else
              @players = Stat.where("years = 2015")

@@ -7,8 +7,11 @@
         <th id="players-name" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "Name", sort: "name"%>
         </th>
+        <th id="players-name" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "Team", sort: "team"%>
+        </th>
         <th id="players-seasons" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
-          <%= link_to "Seasons", sort: "seasons.count"%>
+          <%= link_to "Seasons", sort: "years"%>
         </th>
         <th id="players-games" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "G", sort: "stats.games"%>
@@ -68,6 +71,7 @@
       <% @stats.each do |player| %>
         <tr>
           <td class="text-left py-1 px-2" id = "players_name"><%= player.player.name %></td>
+          <td class="text-left py-1 px-2" id = "players_name"><%= player.team %></td>
           <td class="text-left py-1 px-2"><%= player.years %></td>
           <td class="text-left py-1 px-2"><%= player.games %></td>
           <td class="text-left py-1 px-2"><%= player.atbat %></td>

@@ -29,6 +29,7 @@ csv.each do |row|
 puts "Created #{Season.count} seasons"
 csv.each do |row|
     Stat.create(
+    team: row['Team'],
     games: row['G'],
     atbat: row["AB"],
     runs: row["R"],

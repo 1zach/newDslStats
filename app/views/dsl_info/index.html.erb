@@ -1,0 +1,150 @@
+
+<div class = "flex flex-col justify-center align-center">
+  <h1 class = "text-3xl text-center pb-3">All Time Leaders</h1>
+  <div class = "grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div>
+      <table class ="w-80 bg-white tablesorter shadow rounded border-b border-gray-200">
+        <thead class = "bg-[#50AE26] text-white">
+        <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Rank</th>
+        <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Name</th>
+        <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Hits</th>
+        <thead>
+        <tbody class = "text-gray-700">
+        <%@hits.each_with_index do |player, index|%>
+        <tr class = "hover:bg-gray-200">
+        <td class = "text-left py-1 px-2"><%=index + 1%></td>
+        <td class="text-left py-1 px-2"><%=player.name%></td>
+        <td class="text-left py-1 px-2"><%=player.stats.sum(:hits)%></td>
+        </tr>
+        <%end%>
+        </tbody>
+      </table>
+      <div class = "w-80 shadow bg-white rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Complete Hits Leaders", stats_path(sort: "hits", order: "asc")%></div>
+    </div>
+    <div>
+      <table class ="w-80 bg-white tablesorter shadow rounded border-b border-gray-200">
+        <thead class = "bg-[#50AE26] text-white">
+        <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Rank</th>
+        <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Name</th>
+        <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Runs</th>
+        <thead>
+        <tbody class = "text-gray-700">
+        <%@runs.each_with_index do |player, index|%>
+          <tr class = "hover:bg-gray-200">
+            <td class = "text-left py-1 px-2"><%=index + 1%></td>
+            <td class="text-left py-1 px-2"><%=player.name%></td>
+            <td class="text-left py-1 px-2"><%=player.stats.sum(:runs)%></td>
+          </tr>
+        <%end%>
+        </tbody>
+      </table>
+      <div class = "w-80 bg-white shadow rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Complete Runs Leaders", stats_path(sort: "runs", order: "asc")%></div>
+    </div>
+  <div>
+    <table class ="w-80 bg-white tablesorter shadow rounded border-b border-gray-200">
+      <thead class = "bg-[#50AE26] text-white">
+      <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Rank</th>
+      <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Name</th>
+      <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">HR</th>
+      </thead>
+      <tbody class = "text-gray-700">
+      <%@tb.each_with_index do |player, index|%>
+        <tr class = "hover:bg-gray-200">
+          <td class = "text-left py-1 px-2"><%=index + 1%></td>
+          <td class="text-left py-1 px-2"><%=player.name%></td>
+          <td class="text-left py-1 px-2"><%=player.stats.sum(:homeruns)%></td>
+        </tr>
+      <%end%>
+      </tbody>
+    </table>
+    <div class = "w-80 bg-white shadow rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Complete Home Run Leaders", stats_path(sort: "homeruns", order: "asc")%></div>
+  </div>
+  <div>
+  <table class ="w-80 bg-white tablesorter shadow rounded border-b border-gray-200">
+    <thead class = "bg-[#50AE26] text-white">
+    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Rank</th>
+    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Name</th>
+    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">TB</th>
+    <thead>
+    <tbody class = "text-gray-700">
+    <%@tb.each_with_index do |player, index|%>
+        <tr class = "hover:bg-gray-200">
+        <td class = "text-left py-1 px-2"><%=index + 1%></td>
+        <td class="text-left py-1 px-2"><%=player.name%></td>
+        <td class="text-left py-1 px-2"><%=player.stats.sum(:tb)%></td>
+    </tr>
+    <%end%>
+    </tbody>
+</table>
+    <div class = "w-80 bg-white shadow rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Complete Total Bases Leaders", stats_path(sort: "tb", order: "asc")%></div>
+</div>
+<div>
+<table class ="w-80 bg-white tablesorter shadow rounded border-b border-gray-200">
+    <thead class = "bg-[#50AE26] text-white">
+    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Rank</th>
+    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Name</th>
+    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Average</th>
+    <thead>
+    <tbody class = "text-gray-700">
+    <%@avg.each_with_index do |player, index|%>
+        <tr class = "hover:bg-gray-200">
+        <td class = "text-left py-1 px-2"><%=index + 1%></td>
+        <td class="text-left py-1 px-2"><%=player.name%></td>
+        <td class="text-left py-1 px-2"><%=average(player)%></td>
+    </tr>
+    <%end%>
+    </tbody>
+</table>
+    <div class = "w-80 bg-white shadow rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Complete Average Leaders", stats_path(sort: "avg", order: "asc")%></div>
+
+</div>
+</div>
+
+<div class = "py-10 flex flex-col">
+    <h1 class = "text-3xl text-center pb-3">Single Season Leaders</h1>
+    <div class = "grid grid-cols-1 md:grid-cols-2 gap-4">
+<table class ="w-110 bg-white tablesorter shadow rounded border-b border-gray-200">
+    <thead class = "bg-[#50AE26] text-white">
+    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Rank</th>
+    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Name</th>
+    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Team</th>
+    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Year</th>
+    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Hits</th>
+    <thead>
+    <tbody class = "text-gray-700">
+    <%@singlehits.each_with_index do |player, index|%>
+        <tr class = "hover:bg-gray-200">
+        <td class = "text-left py-1 px-2"><%=index + 1%></td>
+        <td class="text-left py-1 px-2"><%=player.player.name%></td>
+        <td class="text-left py-1 px-2"><%=player.team%></td>
+        <td class="text-left py-1 px-2"><%=player.years%></td>
+        <td class="text-left py-1 px-2"><%=player.hits%></td>
+    </tr>
+    <%end%>
+    <tbody>
+</table>
+<table class ="w-110 bg-white tablesorter shadow rounded border-b border-gray-200">
+    <thead class = "bg-[#50AE26] text-white">
+    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Rank</th>
+    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Name</th>
+    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Team</th>
+    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Year</th>
+    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Runs</th>
+    <thead>
+    <tbody class = "text-gray-700">
+    <%@singleruns.each_with_index do |player, index|%>
+        <tr class = "hover:bg-gray-200">
+        <td class = "text-left py-1 px-2"><%=index + 1%></td>
+        <td class="text-left py-1 px-2"><%=player.player.name%></td>
+        <td class="text-left py-1 px-2"><%=player.team%></td>
+        <td class="text-left py-1 px-2"><%=player.years%></td>
+        <td class="text-left py-1 px-2"><%=player.runs%></td>
+    </tr>
+    <%end%>
+    <tbody>
+</table>
+</div>
+</div>
+
+</div>
+
