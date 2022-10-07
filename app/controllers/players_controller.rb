@@ -9,12 +9,12 @@ class PlayersController < ApplicationController
     def show
         @player = Player.find(params[:id])
         @stathistory = Stat.where(player_id: params[:id])
-        @stathistory = @stathistory.sort_by{ |stat| [-stat.season.year]}
+        #@stathistory = @stathistory.sort_by{ |stat| [-stat.season.year]}
         if params[:sort] == "year"
             @stat = @stathistory.sort_by{ |stat| [-stat.season.year]}
-          elsif params[:sort] != "year"
-            @stat = @stathistory
-            #@stat = @stathistory.sort_by{ |stat| -stat.(params[:sort])}
+          elsif params[:sort] != "year" && params[:sort] != nil 
+            #@stat = @stathistory
+            @stat = @stathistory.order(Arel.sql(params[:sort])).reverse_order
           else
             @stat = @stathistory.sort_by{ |stat| [-stat.season.year]}
           end

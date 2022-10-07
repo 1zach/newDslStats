@@ -4,6 +4,9 @@ class DslInfoController < ApplicationController
         @players = Player.all
         @seasons = Season.all
 
+        @games = Player.joins(:stats).group(:id).sort_by{ |player| -player.stats.sum("games") }
+        @games = @games.first(5)
+        
         @hits = Player.joins(:stats)
         @hits = @hits.group(:id)
         @hits = @hits.sort_by{ |player| -player.stats.sum("hits")}
@@ -11,6 +14,7 @@ class DslInfoController < ApplicationController
 
         @runs = Player.joins(:stats).group(:id).sort_by{ |player| -player.stats.sum("runs") }
         @runs = @runs.first(5)
+        
 
         @homers = Player.joins(:stats).group(:id).sort_by{ |player| -player.stats.sum("homeruns") }
         @homers = @homers.first(5)
@@ -26,6 +30,9 @@ class DslInfoController < ApplicationController
 
         @singleruns = Stat.all.sort_by{|stat| -stat.runs}
         @singleruns = @singleruns.first(5)
+        
+        @singlerbi = Stat.all.sort_by{|stat| -stat.rbi}
+        @singlerbi = @singlerbi.first(5)
 
     end
 

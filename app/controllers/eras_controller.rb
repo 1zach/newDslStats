@@ -41,12 +41,11 @@ class ErasController < ApplicationController
               #@grouped = @grouped.group_by { |player| (player[1]).sum.atbat}
               @grouped = @players.group_by { |player| player.player.name}
               @grouped = @grouped.sort_by { |player| [-player[1].count, player[0]]}
-              
-
-            end
-          else
+            
+            else
              @players = Stat.where("years = 2015")
              @grouped = @players.group_by { |player| player.player.name}
+            end
           end
         # else
         #      @players = Stat.where("years = 2015")
