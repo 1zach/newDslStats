@@ -20,7 +20,7 @@ class DslInfoController < ApplicationController
         @homers = @homers.first(5)
 
         @tb = Player.joins(:stats).group(:id).sort_by{ |player| -player.stats.sum("tb") }
-        @tb = @homers.first(5)
+        @tb = @tb.first(5)
 
         @avg = Player.joins(:stats).group(:id).having("stats.count > ?", 3).sort_by{|player| -average(player)}
         @avg = @avg.first(5)

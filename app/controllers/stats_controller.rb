@@ -1,7 +1,6 @@
 class StatsController < ApplicationController
     
     def index 
-      
         @stats = Stat.all
         @players = Player.all
         if params[:query_seasons]
@@ -58,9 +57,7 @@ class StatsController < ApplicationController
           end
         else
           @sorted = Player.all
-      end
-      
-        
+      end 
     end
 
     def show 

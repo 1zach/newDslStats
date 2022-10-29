@@ -4,13 +4,13 @@
   <div>
     <%=render "seasons_form"%>
   </div>
-<div id="players", class= "shadow rounded border-b border-gray-200" do >
+<div id="players", class= "shadow rounded border-b border-gray-200 overflow-x-auto" do >
   <table class="table min-w-full bg-white tablesorter" id = "myTable">
   <div id = "form">
     <thead class="sticky top-0 bg-[#50AE26] text-white" >
       <tr data-controller="sort">
-        <th  id="players-name" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
-          <%= link_to "Name", sort: "name", years: params[:years], order: sortable%>
+        <th  id="players-name " class="bg-[#50AE26] sticky top-0 left-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <%= link_to "Name", sort: "name", years: params[:years], order: sortable, class: "bg-[#50AE26]"%>
         </th>
         <th id="players-seasons" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "Year", sort: "seasons.count", order: sortable%>
@@ -72,7 +72,7 @@
     <tbody class="text-gray-700">
       <% @players.each do |player| %>
         <tr class = "hover:bg-gray-200">
-          <td class="text-left py-1 px-2" id = "players_name"><%=link_to player.player.name, player_path(player) %></td>
+          <td class="text-left py-1 px-2 sticky left-0 bg-white" id = "players_name"><%=link_to player.player.name, player_path(player) %></td>
           <td class="text-left py-1 px-2"><%= player.years %></td>
           <td class="text-left py-1 px-2"><%= player.games %></td>
           <td class="text-left py-1 px-2"><%= player.atbat %></td>
@@ -87,10 +87,10 @@
           <td class="text-left py-1 px-2"><%= player.k %></td>
           <td class="text-left py-1 px-2"><%= player.sac %></td>
           <td class="text-left py-1 px-2"><%= player.gwrbi %></td>
-          <td class="text-left py-1 px-2"><%= player.avg %></td>
-          <td class="text-left py-1 px-2"><%= player.slg %></td>
-          <td class="text-left py-1 px-2"><%= player.obp %></td>
-          <td class="text-left py-1 px-2"><%= player.ops %></td>
+          <td class="text-left py-1 px-2"><%= number_with_precision(player.avg, precision: 3) %></td>
+          <td class="text-left py-1 px-2"><%= number_with_precision(player.slg, precision: 3) %></td>
+          <td class="text-left py-1 px-2"><%= number_with_precision(player.obp, precision: 3) %></td>
+          <td class="text-left py-1 px-2"><%= number_with_precision(player.ops, precision: 3) %></td>
         </tr>
         
       <% end %>

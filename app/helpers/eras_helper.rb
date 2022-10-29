@@ -136,9 +136,9 @@ module ErasHelper
       atbat = 0
       sac = 0
       player[1].each do |stat|
-        atbat = atbat + stat.atbat
-        hits = hits + stat.hits
-        sac = sac + stat.sac
+        atbat = atbat + stat[:atbat]
+        hits = hits + stat[:hits]
+        sac = sac + stat[:sac]
       end
       onbasep = hits.to_f / (atbat + sac)
       return onbasep.round(3)

@@ -10,75 +10,75 @@
       <tr>
         <th id="players-season" data-tooltip-target = "tooltip-default" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "Year", sort: "year"%>
-          <%=render "tooltip", locals: "year" %>
+          <%# <%=render "tooltip", locals: {title: "year"} %>
         </th>
         <th id="players-games" data-tooltip-target = "tooltip-default" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "G", sort: "stats.games"%>
-          <%=render "tooltip", locals: {title: "Games Played"}%>
+          <%# <%=render "tooltip", locals: {title: "Games Played"}%>
         </th>
         <th id="players-atbats" data-tooltip-target = "tooltip-default" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "AB", sort: "atbat"%>
-          <%=render "tooltip", locals: { title: "At Bats"}%>
+          <%# <%=render "tooltip", locals: { title: "At Bats"}%> 
         </th>
         <th id="players-hits" data-tooltip-target = "tooltip-default" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "H", sort: "hits"%>
-          <%=render "tooltip", locals: {title: "Hits"}%>
+          <%# <%=render "tooltip", locals: {title: "Hits"}%>
         </th>
         <th id="players-runs" data-tooltip-target = "tooltip-default" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "R", sort: "runs"%>
-          <%=render "tooltip", locals: "Runs"%>
+          <%# <%=render "tooltip", locals: {title: "Runs"}%>
         </th>
         <th id="players-single" data-tooltip-target = "tooltip-default" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "1B", sort: "singles"%>
-          <%=render "tooltip", locals: "Singles"%>
+          <%# <%=render "tooltip", locals: {title:  "Singles"}%>
         </th>
         <th id="players-double" data-tooltip-target = "tooltip-default" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "2B", sort: "doubles"%>
-          <%=render "tooltip", locals: "Doubles"%>
+          <%# <%=render "tooltip", locals: {title: "Doubles"}%>
         </th>
         <th id="players-triple" data-tooltip-target = "tooltip-default" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "3B", sort: "triples"%>
-          <%=render "tooltip", locals: "Triples"%>
+          <%# <%=render "tooltip", locals: {title: "Triples"}%>
         </th>
         <th id="players-homeruns" data-tooltip-target = "tooltip-default" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "HR", sort: "homeruns"%>
-          <%=render "tooltip", locals: "Home Runs"%>
+          <%# <%=render "tooltip", locals: {title: "Home Runs"}%>
         </th>
         <th id="players-rbi" data-tooltip-target = "tooltip-default" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "RBI", sort: "rbi"%>
-          <%=render "tooltip", locals: "Runs Batted In"%>
+          <%# <%=render "tooltip", locals: {title: "Runs Batted In"}%>
         </th>
         <th id="players-k" data-tooltip-target = "tooltip-default" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "TB", sort: "tb"%>
-          <%=render "tooltip", locals: "Total Bases"%>
+          <%# <%=render "tooltip", locals:{title: "Total Bases"}%>
         </th>
         <th id="players-k" data-tooltip-target = "tooltip-default" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "K", sort: "k"%>
-          <%=render "tooltip", locals: "Strike Outs"%>
+          <%# <%=render "tooltip", locals: {title: "Strike Outs"}%>
         </th>
         <th id="players-sac" data-tooltip-target = "tooltip-default" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "SAC", sort: "sac"%>
-          <%=render "tooltip", locals: "Sacrifice Flys"%>
+          <%# <%=render "tooltip", locals: {title: "Sacrifice Flys"}%>
         </th>
         <th id="players-gwrbi" data-tooltip-target = "tooltip-default" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "GW", sort: "gwrbi"%>
-          <%=render "tooltip", locals: "Game Winning Rbi"%>
+          <%# <%=render "tooltip", locals: {title: "Game Winning Rbi"}%>
         </th>
         <th id="players-avg" data-tooltip-target = "tooltip-default" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "AVG", sort: "avg"%>
-          <%=render "tooltip", locals: "Batting Average"%>
+          <%# <%=render "tooltip", locals: {title: "Batting Average"}%>
         </th>
         <th id="players-slg" data-tooltip-target = "tooltip-default" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "SLG", sort: "slg"%>
-          <%=render "tooltip", locals: "Slugging Percentage"%>
+          <%# <%=render "tooltip", locals: {title: "Slugging Percentage"}%>
         </th>
         <th id="players-slg" data-tooltip-target = "tooltip-default" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "OBP", sort: "obp"%>
-          <%=render "tooltip", locals: "On Base Percentage"%>
+          <%# <%=render "tooltip", locals: {title: "On Base Percentage"}%>
         </th>
         <th id="players-slg" data-tooltip-target = "tooltip-default" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
           <%= link_to "OPS", sort: "ops"%>
-          <%=render "tooltip", locals: "On Base + Slugging"%>
+          <%# <%=render "tooltip", locals: {title: "On Base + Slugging"}%>
         </th>
       </tr>
     </thead>
@@ -100,10 +100,10 @@
           <td class="text-left py-1 px-2"><%= stat.k %></td>
           <td class="text-left py-1 px-2"><%= stat.sac %></td>
           <td class="text-left py-1 px-2"><%= stat.gwrbi %></td>
-          <td class="text-left py-1 px-2"><%= stat.avg %></td>
-          <td class="text-left py-1 px-2"><%= stat.slg%></td>
-          <td class="text-left py-1 px-2"><%= stat.obp%></td>
-          <td class="text-left py-1 px-2"><%= stat.ops%></td>
+          <td class="text-left py-1 px-2"><%= number_with_precision(stat.avg, precision: 3) %></td>
+          <td class="text-left py-1 px-2"><%= number_with_precision(stat.slg, precision: 3)%></td>
+          <td class="text-left py-1 px-2"><%= number_with_precision(stat.obp, precision: 3)%></td>
+          <td class="text-left py-1 px-2"><%= number_with_precision(stat.ops, precision: 3)%></td>
         </tr>
       <% end %>
           
