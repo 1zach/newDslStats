@@ -73,7 +73,7 @@
     <%= @selected%>
       <% @grouped.each do |player| %>
         <tr class = "hover:bg-gray-200">
-          <td class="text-left py-1 px-2 sticky left-0 bg-white" id = "players_name"><%=player[0] %></td>
+          <td class="text-left py-1 px-2 sticky left-0 bg-white" id = "players_name"><%=link_to player[0], player_path(player[1][:id]) %></td>
           <td class="text-left py-1 px-2" id = "players_seasons"><%=player[1][:seasons] %></td>
           <td class = "text-left py-1 px-2"><%=player[1][:games]%></td>
           <td class = "text-left py-1 px-2"><%=player[1][:atbat]%></td>

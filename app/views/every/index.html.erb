@@ -70,12 +70,12 @@
     <tbody class="text-gray-700">
       <% @stats.each do |player| %>
         <tr>
-          <td class="text-left py-1 px-2 sticky left-0 bg-white" id = "players_name"><%= player.player.name %></td>
+          <td class="text-left py-1 px-2 sticky left-0 bg-white" id = "players_name"><%=link_to player.player.name, player_path(player.player_id) %></td>
           <td class="text-left py-1 px-2" id = "players_name"><%= player.team %></td>
           <td class="text-left py-1 px-2"><%= player.years %></td>
           <td class="text-left py-1 px-2"><%= player.games %></td>
           <td class="text-left py-1 px-2"><%= player.atbat %></td>
-          <td class="text-left py-1 px-2"><%= player.hits %></td>
+          <td class="text-left py-1 px-2" id="hits"><%= player.hits %></td>
           <td class="text-left py-1 px-2"><%= player.runs %></td>
           <td class="text-left py-1 px-2"><%= player.singles %></td>
           <td class="text-left py-1 px-2"><%= player.doubles %></td>

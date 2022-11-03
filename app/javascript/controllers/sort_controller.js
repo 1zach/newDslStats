@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = [ ]
   connect() {
     this.numeric = false
-    console.log("working")
+    
   }
 }
 //   sortBy(event){

@@ -20,7 +20,6 @@ def onbase(player)
     if player.stats.sum(:atbat) == 0
       return 0.00
     else
-     
       ((player.stats.sum(:singles) + player.stats.sum(:doubles) + player.stats.sum(:triples) + player.stats.sum(:homeruns)).to_f / (player.stats.sum(:atbat) + player.stats.sum(:sac))).to_f.round(3)
     end
 end

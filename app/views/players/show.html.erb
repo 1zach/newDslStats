@@ -1,4 +1,3 @@
-
 <div class = "d-flex flex-column">
 <div class = "py-3">
 <h1 id = "player_name"><%= @player.name%></h1>
@@ -89,7 +88,7 @@
           <td class="text-left py-1 px-2" id = "season_year"><%= stat.season.year %></td>
           <td class="text-left py-1 px-2"><%= stat.games %></td>
           <td class="text-left py-1 px-2"><%= stat.atbat %></td>
-          <td class="text-left py-1 px-2"><%= stat.hits %></td>
+          <td class="text-left py-1 px-2" id="hits"><%= stat.hits %></td>
           <td class="text-left py-1 px-2"><%= stat.runs %></td>
           <td class="text-left py-1 px-2"><%= stat.singles %></td>
           <td class="text-left py-1 px-2"><%= stat.doubles %></td>
@@ -106,7 +105,36 @@
           <td class="text-left py-1 px-2"><%= number_with_precision(stat.ops, precision: 3)%></td>
         </tr>
       <% end %>
+          <tr>
+          <td class="text-left py-1 px-2" id = "season_year">Totals</td>
+          <td class="text-left py-1 px-2"><%= totals("games") %></td>
+          <td class="text-left py-1 px-2"><%= totals("atbat") %></td>
+          <td class="text-left py-1 px-2"><%= totals("hits") %></td>
+          <td class="text-left py-1 px-2"><%= totals("runs") %></td>
+          <td class="text-left py-1 px-2"><%= totals("singles") %></td>
+          <td class="text-left py-1 px-2"><%= totals("doubles") %></td>
+          <td class="text-left py-1 px-2"><%= totals("triples") %></td>
+          <td class="text-left py-1 px-2"><%= totals("homeruns") %></td>
+          <td class="text-left py-1 px-2"><%= totals("rbi") %></td>
+          <td class="text-left py-1 px-2"><%= totals("tb") %></td>
+          <td class="text-left py-1 px-2"><%= totals("k") %></td>
+          <td class="text-left py-1 px-2"><%= totals("sac") %></td>
+          <td class="text-left py-1 px-2"><%= totals("gwrbi") %></td>
+          <td class="text-left py-1 px-2"><%= avg() %></td>
+          <td class="text-left py-1 px-2"><%= slug() %></td>
+          <td class="text-left py-1 px-2"><%= obp() %></td>
+          <td class="text-left py-1 px-2"><%= opslug() %></td>
+          </tr>
+
+          
           
     </tbody>
   </table>
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+
+<%=bar_chart @stat.join(season).sum(:hits)%>
+
+
+
+  
   </div>

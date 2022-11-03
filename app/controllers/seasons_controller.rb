@@ -27,6 +27,7 @@ class SeasonsController < ApplicationController
 
 
 
+
     def average(player)
         if player.sum(:hits) == 0 || player.sum(:atbat) == 0
             return 0.00

@@ -72,7 +72,8 @@
     <tbody class="text-gray-700">
       <% @players.each do |player| %>
         <tr class = "hover:bg-gray-200">
-          <td class="text-left py-1 px-2 sticky left-0 bg-white" id = "players_name"><%=link_to player.player.name, player_path(player) %></td>
+       
+          <td class="text-left py-1 px-2 sticky left-0 bg-white" id = "players_name"><%=link_to player.player.name, player_path(player.player_id) %></td>
           <td class="text-left py-1 px-2"><%= player.years %></td>
           <td class="text-left py-1 px-2"><%= player.games %></td>
           <td class="text-left py-1 px-2"><%= player.atbat %></td>

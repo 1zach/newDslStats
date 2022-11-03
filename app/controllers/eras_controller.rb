@@ -181,8 +181,6 @@ class ErasController < ApplicationController
         hits = hits + stat[:hits]
       end
       return (hits.to_f/ atbat).round(3)
-    
-
     end
 
     def slg(player)
@@ -220,9 +218,20 @@ class ErasController < ApplicationController
       return opluss.round(3)
     end
 
+    def ids(player)
+      id = 0
+      player[1].each do |stat|
+        id = stat[:player_id]
+      end
+      return id
+     
+    end
+
     def makePlayer(player) 
       [player[0],
-        {seasons: player[1].count,
+        {
+        id: ids(player),
+        seasons: player[1].count,
         games: games(player),
         atbat: atbat(player),
         hits: hits(player),
