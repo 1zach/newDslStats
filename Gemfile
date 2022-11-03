@@ -57,6 +57,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "dotenv-rails"
 gem "chartkick"
+gem 'chart-js-rails'
 gem "groupdate"
 gem 'hightop'
 end
