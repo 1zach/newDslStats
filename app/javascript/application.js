@@ -7,8 +7,6 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 import ("bootstrap")
 
-//= require chartkick
-//= require Chart.bundle
 
 
 
