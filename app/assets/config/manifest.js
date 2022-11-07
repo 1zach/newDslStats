@@ -4,4 +4,4 @@
 //= link_tree ../builds
 
 //= require chartkick
-//= require Chart.bundle
+
