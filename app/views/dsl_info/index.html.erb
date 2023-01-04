@@ -21,7 +21,7 @@
         <%end%>
         </tbody>
       </table>
-      <div class = "w-80 shadow bg-white rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Complete Games Leaders", stats_path(sort: "games", order: "asc")%></div>
+      <div class = "w-80 shadow bg-white rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Complete Games Leaders", stats_path(sort: "games", order: "asc", query_seasons: "6")%></div>
     </div>
     <div>
       <table class ="w-80 bg-white tablesorter shadow rounded border-b border-gray-200">
@@ -40,7 +40,7 @@
         <%end%>
         </tbody>
       </table>
-      <div class = "w-80 shadow bg-white rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Complete Hits Leaders", stats_path(sort: "hits", order: "asc")%></div>
+      <div class = "w-80 shadow bg-white rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Complete Hits Leaders", stats_path(sort: "hits", order: "asc", query_seasons: "6")%></div>
     </div>
     <div>
       <table class ="w-80 bg-white tablesorter shadow rounded border-b border-gray-200">
@@ -59,7 +59,7 @@
         <%end%>
         </tbody>
       </table>
-      <div class = "w-80 bg-white shadow rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Complete Runs Leaders", stats_path(sort: "runs", order: "asc")%></div>
+      <div class = "w-80 bg-white shadow rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Complete Runs Leaders", stats_path(sort: "runs", order: "asc", query_seasons: "6")%></div>
     </div>
   <div>
     <table class ="w-80 bg-white tablesorter shadow rounded border-b border-gray-200">
@@ -78,7 +78,7 @@
       <%end%>
       </tbody>
     </table>
-    <div class = "w-80 bg-white shadow rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Complete Home Run Leaders", stats_path(sort: "homeruns", order: "asc")%></div>
+    <div class = "w-80 bg-white shadow rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Complete Home Run Leaders", stats_path(sort: "homeruns", order: "asc", query_seasons: "6")%></div>
   </div>
   <div>
   <table class ="w-80 bg-white tablesorter shadow rounded border-b border-gray-200">
@@ -97,7 +97,7 @@
     <%end%>
     </tbody>
 </table>
-    <div class = "w-80 bg-white shadow rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Complete Total Bases Leaders", stats_path(sort: "tb", order: "asc")%></div>
+    <div class = "w-80 bg-white shadow rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Complete Total Bases Leaders", stats_path(sort: "tb", order: "asc", query_seasons: "6")%></div>
 </div>
 <div>
 <table class ="w-80 bg-white tablesorter shadow rounded border-b border-gray-200">
@@ -116,7 +116,7 @@
     <%end%>
     </tbody>
 </table>
-    <div class = "w-80 bg-white shadow rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Complete Average Leaders", stats_path(sort: "avg", order: "asc")%></div>
+    <div class = "w-80 bg-white shadow rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Complete Average Leaders", stats_path(sort: "avg", order: "asc", query_seasons: "6")%></div>
 
 </div>
 </div>

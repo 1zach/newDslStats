@@ -18,6 +18,12 @@ class PlayersController < ApplicationController
           else
             @stat = @stathistory.sort_by{ |stat| [stat.season.year]}
           end
+
+          @hits = @player.stats.map { |season| [season.years, season.hits]}
+          @runs = @player.stats.map { |season| [season.years, season.runs]}
+          @avg = @player.stats.map { |season| [season.years, season.avg]}
+          @tb = @player.stats.map { |season| [season.years, season.tb]}
+          @slg = @player.stats.map {|season| [season.years, (season.slg)]}
           
       def charts(stat)
         @all = Player.joins(:stats).group("id", "name").sum(stat)

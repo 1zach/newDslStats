@@ -27,7 +27,6 @@ class ChartsController < ApplicationController
          @doubles = @doubles.sort_by {|k, v| -v}
          @doubles = @doubles.slice(0, 10)
     
-        #render json: @stats
     end
 
 

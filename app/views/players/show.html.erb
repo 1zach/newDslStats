@@ -1,3 +1,6 @@
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+
+
 <div class = "d-flex flex-column">
 <div class = "py-3">
 <h1 id = "player_name"><%= @player.name%></h1>
@@ -130,9 +133,14 @@
           
     </tbody>
   </table>
-<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 
-<%=bar_chart @stat.join(season).sum(:hits)%>
+<div class="grid grid-cols-3">
+<%= column_chart @hits, title: "Hits", min: "null", max: "null"%>
+<%= column_chart @runs, title: "Runs", min: "null", max: "null"%>
+<%= column_chart @avg, title: "Average", min: "null", max: "null"%>
+<%= column_chart @tb, title: "Total Bases", min: "null", max: "null"%>
+<%= column_chart @slg, title: "Slugging", min: "null", max: "null"%>
+</div>
 
 
 
