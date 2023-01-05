@@ -1,6 +1,10 @@
 
 <div class = "d-flex flex-column">
-  <h2 class = "py-4">You are seeing stats from the year <%=params[:years]%> sorted by <%=params[:sort]%></h2>
+  <h1 class = "text-2xl md:text-6xl my-4 p-2 text-center bg-[#50AE26] text-white w-1/2 place-self-center" >Seasons </h1>
+    <h2 class = "text-l md:text-xl text-center w-1/2 place-self-center">This page displays season statistics by year.  You can click the categories to re-sort the table. </h2>
+
+
+  <h2 class = "py-4">You are seeing stats from the year <span class="font-bold"><%=params[:years] ? params[:years] : 2022 %></span> sorted by <span class="font-bold capitalize"><%=params[:sort] ? params[:sort] : "name"%></span></h2>
   <div>
     <%=render "seasons_form"%>
   </div>

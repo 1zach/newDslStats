@@ -3,7 +3,10 @@
 
 <div class = "d-flex flex-column">
 <div class = "py-3">
-<h1 id = "player_name"><%= @player.name%></h1>
+<div class="bg-[#50AE26] my-3 p-3">
+  
+    <h1 id = "player_name" class="text-3xl text-white" ><%= @player.name.split(',')[1]%> <%= @player.name.split(',')[0]%></h1>
+    <p class="text-white">Teams: <%=@teams%></p>
 </div>
 <div id="players" class="shadow rounded border-b border-gray-200 overflow-x-scroll">
   <table class="table min-w-full bg-white tablesorter" id = "myTable">
@@ -134,7 +137,7 @@
     </tbody>
   </table>
 
-<div class="grid grid-cols-1  p-2 gap-2">
+<div class="grid grid-cols-1 md:grid-cols-2  p-2 gap-2">
 <%= column_chart [{name: "Player Atbats", data: @ab}, {name: "Avg Player Atbats", data: @abavg}], title: "Atbats", min: "null", max: "null", colors: ["#50AE26", "black"]%>
 <%= column_chart [{name: "Player Hits", data: @hits}, {name: "Avg Player Hits", data: @hitsavg}], title: "Hits", min: "null", max: "null", colors: ["#50AE26", "black"]%>
 <%= column_chart [{name: "Player Runs", data: @runs}, {name: "Avg Player Runs", data: @runsavg}], title: "Runs", min: "null", max: "null", colors: ["#50AE26", "black"]%>

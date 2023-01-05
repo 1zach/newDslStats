@@ -60,6 +60,12 @@ class PlayersController < ApplicationController
           @rbiavg = @player.stats.map {|season| [season.years, statsaverage(season.years, "rbi")]}
           
 
+          @teams = @player.stats.sort_by {|season| season.years}
+          @teams = @teams.map {|season| [season.years, season.team]}
+          @teams = @teams.join(' - ')
+
+          @yearsplayed = @player.stats.map {|season| season.years}
+          @yearsplayed = @yearsplayed.sort.join(', ')
           
 
           
