@@ -5,7 +5,7 @@
 <div class = "py-3">
 <h1 id = "player_name"><%= @player.name%></h1>
 </div>
-    <div id="players" class="shadow rounded border-b border-gray-200">
+<div id="players" class="shadow rounded border-b border-gray-200 overflow-x-scroll">
   <table class="table min-w-full bg-white tablesorter" id = "myTable">
   <div id = "form">
     <thead class="bg-[#50AE26] text-white">
@@ -108,7 +108,7 @@
           <td class="text-left py-1 px-2"><%= number_with_precision(stat.ops, precision: 3)%></td>
         </tr>
       <% end %>
-          <tr>
+          <tr class="font-bold border-t-2">
           <td class="text-left py-1 px-2" id = "season_year">Totals</td>
           <td class="text-left py-1 px-2"><%= totals("games") %></td>
           <td class="text-left py-1 px-2"><%= totals("atbat") %></td>
@@ -134,12 +134,16 @@
     </tbody>
   </table>
 
-<div class="grid grid-cols-3">
-<%= column_chart @hits, title: "Hits", min: "null", max: "null"%>
-<%= column_chart @runs, title: "Runs", min: "null", max: "null"%>
-<%= column_chart @avg, title: "Average", min: "null", max: "null"%>
-<%= column_chart @tb, title: "Total Bases", min: "null", max: "null"%>
-<%= column_chart @slg, title: "Slugging", min: "null", max: "null"%>
+<div class="grid grid-cols-1  p-2 gap-2">
+<%= column_chart [{name: "Player Atbats", data: @ab}, {name: "Avg Player Atbats", data: @abavg}], title: "Atbats", min: "null", max: "null", colors: ["#50AE26", "black"]%>
+<%= column_chart [{name: "Player Hits", data: @hits}, {name: "Avg Player Hits", data: @hitsavg}], title: "Hits", min: "null", max: "null", colors: ["#50AE26", "black"]%>
+<%= column_chart [{name: "Player Runs", data: @runs}, {name: "Avg Player Runs", data: @runsavg}], title: "Runs", min: "null", max: "null", colors: ["#50AE26", "black"]%>
+<%= column_chart [{name: "Player TB", data: @tb}, {name: "Avg Player TB", data: @tbavg}], title: "TB", min: "null", max: "null", colors: ["#50AE26", "black"]%>
+<%= column_chart [{name: "Player HR", data: @hr}, {name: "Avg Player HR", data: @hravg}], title: "HR", min: "null", max: "null", colors: ["#50AE26", "black"]%>
+<%= column_chart [{name: "Player RBI", data: @rbi}, {name: "Avg Player RBI", data: @rbiavg}], title: "RBI", min: "null", max: "null", colors: ["#50AE26", "black"]%>
+<%= column_chart [{name: "Player AVG", data: @avg}, {name: "Avg Player AVG", data: @avgavg}], title: "AVG", min: "null", max: "null", colors: ["#50AE26", "black"]%>
+<%= column_chart @slg, title: "Slugging", min: "null", max: "null", colors: ["#50AE26", "white"]%>
+<%= column_chart @ops, title: "On Base + Slugging", min: "null", max: "null", colors: ["#50AE26", "white"]%>
 </div>
 
 

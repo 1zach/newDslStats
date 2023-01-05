@@ -6,6 +6,7 @@
       <div class="relative inline-flex self-center">
        
       <select name="query_seasons" id="seasons" class = "font-medium rounded border-2 border-[#50AE26] text-gray-600 h-7 w-20 pl-3 pr-3 mx-3 bg-white hover:border-gray-400 focus:outline-none appearance-none after:outline-none">
+        <option value="0" selected="selected"><%=params[:query_seasons] ? params[:query_seasons] : 6%></option>
         <option value="8">8</option>
         <option value="7">7</option>
         <option value="6">6</option>

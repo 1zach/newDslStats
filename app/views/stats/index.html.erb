@@ -1,10 +1,15 @@
 
 
 <div class = "d-flex flex-column">
-  <h2 class = "py-4">You are seeing players with at least <%=params[:query_seasons]%>  seasons in the DSL, sorted by <%=params[:sort]%></h2>
+  <h1 class = "text-6xl my-4 p-2 text-center bg-[#50AE26] text-white w-1/2 place-self-center" >Stats </h1>
+  <%# <h1 class = "text-6xl py-4 text-center underline underline-offset-4 decoration-[#50AE26]">Stats</h1> %>
+  <h2 class = "text-xl text-center w-4/5 place-self-center">This page displays season statistics depending on the number of seasons a player has played.  You can click the categories to re-sort the table. </h2>
   <div>
-    <%=render "form"%>
+    <h2 class = "py-4">You are seeing players with at least <span class="font-bold"><%=params[:query_seasons] ? params[:query_seasons] : 6%></span>  seasons in the DSL sorted by <span class="font-bold capitalize"><%=params[:sort] ? params[:sort] : "name"%></span></h2>
+    <%=render "form"%>   
   </div>
+  </div>
+
  <!-- <div>
     <%=render "previous_season_form"%>
   </div> -->

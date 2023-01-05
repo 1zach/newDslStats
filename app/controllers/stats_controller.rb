@@ -3,11 +3,11 @@ class StatsController < ApplicationController
     def index 
         @stats = Stat.all
         @players = Player.all
-        #if params[:query_seasons]
+        if params[:query_seasons]
           @filtered = Player.joins(:seasons).having("seasons.count >= ?", params[:query_seasons])
-        #else
-        #  @filtered = Player.joins(:seasons).having("seasons.count >= ?", 6)
-        #end
+        else
+          @filtered = Player.joins(:seasons).having("seasons.count >= ?", 6)
+        end
         @grouped = @filtered.group(:id)
         if params[:sort] == "seasons.count"
           #if params[:order] == "asc"

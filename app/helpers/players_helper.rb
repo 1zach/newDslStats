@@ -9,9 +9,7 @@ module PlayersHelper
 
     def avg()
         hits = @stat.reduce(0) { |sum, obj| sum + obj[:hits]}
-        
         atbat = @stat.reduce(0) { |sum, obj| sum+ obj[:atbat]}
-        
         avg = number_with_precision(hits.to_f/atbat, precision: 3)
         return avg
     end
