@@ -1,0 +1,17 @@
+
+<table class="border-black border" >
+  <thead>
+    <tr class="bg-<%= color %> text-white">
+      <th class="md:p-2 text-sm md:text-md"><%=link_to player.name, player_path(player[:id]), class: "hover:text-white"%></th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% data.map do |k, v| %>
+      <tr>
+        <td class="capitalize md:p-2 text-sm md:text-md"><%= k %></td>
+        <td class="text-right md:p-2"><%= v %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

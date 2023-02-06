@@ -1,0 +1,31 @@
+
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+
+<div class="flex-col gap-3 pb-3">
+<div class="py-3">
+<%=form_with url: "/comparison", method: :get do |form|%>
+  <div class="flex-col md:flex-row md:justify-between">
+    <%= form.collection_select :player_id1, Player.order(:name), :id, :name, {prompt: true}, class: "p-1"%>
+    <%= form.collection_select :player_id2, Player.order(:name), :id, :name, {prompt: true}, class: "p-1"%>
+    <%= form.collection_select :player_id3, Player.order(:name), :id, :name, {prompt: true}, class: "p-1"%>
+    <%=form.submit "Submit", class: " bg-[#50AE26] text-white hover:bg-black hover:bg-gray-600 p-1 mt-3"%>
+  </div>
+
+<%end%>
+</div>
+<div class="pb-3">
+  <div class="grid grid-cols-3 gap-3">
+  <%= render partial: 'table', locals: { player: @player1, data: @totals1, color: "[#50AE26]"} %>
+  <%= render partial: 'table', locals: { player: @player2, data: @totals2,  color: "black"} %>
+  <%= render partial: 'table', locals: { player: @player3, data: @totals3,  color: "[#8426AE]"}%>
+  </div>
+</div>
+
+
+<div class="grid grid-col-1 gap-3">
+  <%= column_chart [{name: @player1.name, data: @totals1}, {name: @player2.name, data: @totals2}, {name: @player3.name, data: @totals3}], title: "Compare Totals", min: "null", max: "null", colors: ["#50AE26", "black", "#8426AE"], library: {animation: { startup: true, duration: 1500, easing: 'linear' }}%>
+  <%= column_chart [{name: @player1.name, data: @season_avg1}, {name: @player2.name, data: @season_avg2}, {name: @player3.name, data: @season_avg3}], title: "Compare Average Season", min: "null", max: "null", colors: ["#50AE26", "black", "#8426AE"], library: {animation: { startup: true, duration: 1500, easing: 'linear' }}%>
+</div>
+
+</div>
+

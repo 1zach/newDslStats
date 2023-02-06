@@ -6,6 +6,7 @@
 <div class="bg-[#50AE26] my-3 p-3">
   
     <h1 id = "player_name" class="text-3xl text-white" ><%= @player.name.split(',')[1]%> <%= @player.name.split(',')[0]%></h1>
+    <p class="text-white">Seasons Played: <%=@yearsplayed.split(",").count%></p>
     <p class="text-white">Teams: <%=@teams%></p>
 </div>
 <div id="players" class="shadow rounded border-b border-gray-200 overflow-x-scroll">
