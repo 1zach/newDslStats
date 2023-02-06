@@ -1,4 +1,6 @@
 class Player < ApplicationRecord
+    include ActionView::Helpers::NumberHelper
+
     validates :name, uniqueness: true
     has_many :stats, dependent: :destroy
     has_many :seasons, through: :stats
@@ -6,7 +8,7 @@ class Player < ApplicationRecord
 
     def totals
         {
-            games: self.stats.sum(:games),
+        games: self.stats.sum(:games),
         atbat: self.stats.sum(:atbat),
         runs: self.stats.sum(:runs),
         hits: self.stats.sum(:hits),
@@ -19,10 +21,15 @@ class Player < ApplicationRecord
 
     def season_avg
         obj = self.totals.transform_values {|v| v / self.seasons.count}
-        
-        
     end
 
-    
+    def avg
+        hits = self.stats.sum(:hits)
+        atbat = self.stats.sum(:atbat)
+        avg = hits.to_f/atbat
+        stringavg = avg.to_s
+        stringavg.slice!(2, 3).to_i / 1000.to_f
+        
+    end
 
 end

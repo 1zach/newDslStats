@@ -1,7 +1,9 @@
 
 <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 
-<div class="flex-col gap-3 pb-3">
+<div class="d-flex flex-col gap-3 pb-3">
+ <h1 class = "text-2xl md:text-6xl my-4 p-2 text-center bg-[#50AE26] text-white w-1/2 place-self-center" >Comparisons </h1>
+    <h2 class = "text-l md:text-xl text-center w-1/2 place-self-center">This page allows you to compare 3 players.  Make sure to include three selections or weird stuff might happen. </h2>
 <div class="py-3">
 <%=form_with url: "/comparison", method: :get do |form|%>
   <div class="flex-col md:flex-row md:justify-between">
