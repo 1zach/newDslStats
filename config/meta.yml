@@ -1,0 +1,4 @@
+meta_product_name: "DSL Stats"
+meta_title: "DSL Stats"
+meta_description: "View stats and graphs for the Daegu Softball League's last 8 seasons."
+meta_image: "DSLStatsHome.png" # should exist in `app/assets/images/`
