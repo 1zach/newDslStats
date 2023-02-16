@@ -34,6 +34,15 @@ class DslInfoController < ApplicationController
         @singlerbi = Stat.all.sort_by{|stat| -stat.rbi}
         @singlerbi = @singlerbi.first(5)
 
+        @singlehr = Stat.all.sort_by{|stat| -stat.homeruns}
+        @singlehr = @singlehr.first(5)
+
+        @singletb = Stat.all.sort_by{|stat| -stat.tb}
+        @singletb = @singletb.first(5)
+
+        @singledoubles = Stat.all.sort_by {|stat| -stat.doubles}.first(5)
+        
+
     end
 
     def average(player)

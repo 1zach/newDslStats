@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :charts 
 
   get "/comparison", to: "comparison#index"
+  get "/about", to: "about#index"
   
   # Defines the root path route ("/")
   # root "articles#index"
