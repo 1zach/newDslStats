@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :admin_users
+  devise_for :users
+  ActiveAdmin.routes(self)
   root to: "dsl_info#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :stats
