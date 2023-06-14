@@ -19,7 +19,7 @@ namespace :import_stats do
                 season.save
               
           
-    puts "Created #{season} season"
+    puts "Created #{season} season "
     csv.each do |row|
         stat = Stat.create(
         team: row['Team'],
