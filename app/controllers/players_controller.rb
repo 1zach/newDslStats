@@ -16,7 +16,7 @@ class PlayersController < ApplicationController
             #@stat = @stathistory
             @stat = @stathistory.order(Arel.sql(params[:sort])).reverse_order
           else
-            @stat = @stathistory.sort_by{ |stat| [stat.season.year]}
+            @stat = @stathistory.sort_by{ |stat| [stat.years]}
           end
 
           def statsaverage(season, category)
