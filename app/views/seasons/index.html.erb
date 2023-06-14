@@ -4,7 +4,7 @@
     <h2 class = "text-l md:text-xl text-center w-1/2 place-self-center">This page displays season statistics by year.  You can click the categories to re-sort the table. </h2>
 
 
-  <h2 class = "py-4">You are seeing stats from the year <span class="font-bold"><%=params[:years] ? params[:years] : 2022 %></span> sorted by <span class="font-bold capitalize"><%=params[:sort] ? params[:sort] : "name"%></span></h2>
+  <h2 class = "py-4">You are seeing stats from the year <span class="font-bold"><%=params[:years] ? params[:years] : 2023 %></span> sorted by <span class="font-bold capitalize"><%=params[:sort] ? params[:sort] : "name"%></span></h2>
   <div>
     <%=render "seasons_form"%>
   </div>

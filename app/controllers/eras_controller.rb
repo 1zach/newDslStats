@@ -1,33 +1,35 @@
 class ErasController < ApplicationController
     def index
         if params[:years]
-           if params[:years].length == 1
-               @players = Stat.where("years = ?", params[:years][0])
-             elsif params[:years].length == 2
-               @players = Stat.where("years = ?", params[:years][0]).or(Stat.where("years = ?", params[:years][1]))
-            elsif params[:years].length == 3
-              @players = Stat.where("years = ?", params[:years][0]).or(Stat.where("years = ?", params[:years][1])).or(Stat.where("years = ?", params[:years][2]))
-            elsif params[:years].length == 4
-              @players = Stat.where("years = ?", params[:years][0]).or(Stat.where("years = ?", params[:years][1])).or(Stat.where("years = ?", params[:years][2])).or(Stat.where("years =?", params[:years][3]))
-            elsif params[:years].length == 5
-              @players = Stat.where("years = ?", params[:years][0]).or(Stat.where("years = ?", params[:years][1]))
-              .or(Stat.where("years = ?", params[:years][2])).or(Stat.where("years =?", params[:years][3]))
-              .or(Stat.where("years = ?", params[:years][4]))
-            elsif params[:years].length == 6
-              @players = Stat.where("years = ?", params[:years][0]).or(Stat.where("years = ?", params[:years][1]))
-              .or(Stat.where("years = ?", params[:years][2])).or(Stat.where("years = ?", params[:years][3]))
-              .or(Stat.where("years = ?", params[:years][4])).or(Stat.where("years = ?", params[:years][5]))
-            elsif params[:years].length == 7
-              @players = Stat.where("years = ?", params[:years][0]).or(Stat.where("years = ?", params[:years][1]))
-              .or(Stat.where("years = ?", params[:years][2])).or(Stat.where("years = ?", params[:years][3]))
-              .or(Stat.where("years = ?", params[:years][4])).or(Stat.where("years = ?", params[:years][5]))
-              .or(Stat.where("years = ?", params[:years][6]))
-            elsif params[:years].length == 7
-              @players = Stat.where("years = ?", params[:years][0]).or(Stat.where("years = ?", params[:years][1]))
-              .or(Stat.where("years = ?", params[:years][2])).or(Stat.where("years = ?", params[:years][3]))
-              .or(Stat.where("years = ?", params[:years][4])).or(Stat.where("years = ?", params[:years][5]))
-              .or(Stat.where("years = ?", params[:years][6])).or(Stat.where("years = ?", params[:years][7]))
-            end
+          #  if params[:years].length == 1
+          #      @players = Stat.where("years = ?", params[:years][0])
+          #    elsif params[:years].length == 2
+          #      @players = Stat.where("years = ?", params[:years][0]).or(Stat.where("years = ?", params[:years][1]))
+          #   elsif params[:years].length == 3
+          #     @players = Stat.where("years = ?", params[:years][0]).or(Stat.where("years = ?", params[:years][1])).or(Stat.where("years = ?", params[:years][2]))
+          #   elsif params[:years].length == 4
+          #     @players = Stat.where("years = ?", params[:years][0]).or(Stat.where("years = ?", params[:years][1])).or(Stat.where("years = ?", params[:years][2])).or(Stat.where("years =?", params[:years][3]))
+          #   elsif params[:years].length == 5
+          #     @players = Stat.where("years = ?", params[:years][0]).or(Stat.where("years = ?", params[:years][1]))
+          #     .or(Stat.where("years = ?", params[:years][2])).or(Stat.where("years =?", params[:years][3]))
+          #     .or(Stat.where("years = ?", params[:years][4]))
+          #   elsif params[:years].length == 6
+          #     @players = Stat.where("years = ?", params[:years][0]).or(Stat.where("years = ?", params[:years][1]))
+          #     .or(Stat.where("years = ?", params[:years][2])).or(Stat.where("years = ?", params[:years][3]))
+          #     .or(Stat.where("years = ?", params[:years][4])).or(Stat.where("years = ?", params[:years][5]))
+          #   elsif params[:years].length == 7
+          #     @players = Stat.where("years = ?", params[:years][0]).or(Stat.where("years = ?", params[:years][1]))
+          #     .or(Stat.where("years = ?", params[:years][2])).or(Stat.where("years = ?", params[:years][3]))
+          #     .or(Stat.where("years = ?", params[:years][4])).or(Stat.where("years = ?", params[:years][5]))
+          #     .or(Stat.where("years = ?", params[:years][6]))
+          #   elsif params[:years].length == 7
+          #     @players = Stat.where("years = ?", params[:years][0]).or(Stat.where("years = ?", params[:years][1]))
+          #     .or(Stat.where("years = ?", params[:years][2])).or(Stat.where("years = ?", params[:years][3]))
+          #     .or(Stat.where("years = ?", params[:years][4])).or(Stat.where("years = ?", params[:years][5]))
+          #     .or(Stat.where("years = ?", params[:years][6])).or(Stat.where("years = ?", params[:years][7]))
+          #   elsif params[:years].length == 8
+              @players = Stat.where('years IN (?)', params[:years])
+           
             
             if !params[:sort]
               if params[:order] == "asc" 
