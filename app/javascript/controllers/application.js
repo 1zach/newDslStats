@@ -9,6 +9,6 @@ application.debug = false
 window.Stimulus   = application
 
 export { application }
-export {d3}
+// export {d3}
 export {Chart}
 
