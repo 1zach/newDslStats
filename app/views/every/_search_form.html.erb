@@ -1,0 +1,13 @@
+<div class="flex flex-row items-center justify-between">
+  <%= form_with(url: every_index_path, method: :get) do |form|%>
+    <%form.label :search, "Search"%>
+    <%=form.text_field :search, class: "w-1/2 md:w-1/2 focus:border-transparent focus:ring focus:ring-2 focus:ring-[#50AE26]"%>
+    <%=form.submit "Search", class: "mx-3 px-2 border-1 bg-[#50AE26] border-gray-800 hover:bg-gray-600 text-white "%>
+  <%end%>
+  <%=form_with(url: every_index_path, method: :get) do |form|%>
+    <%form.label :clear, "Clear"%>
+    <%=form.submit "Clear", class: "mx-3 px-2 border-3 text-[#50AE26] border-gray-800 hover:bg-gray-600 bg-white"%>
+  <%end%>
+</div>
+
+

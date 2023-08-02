@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :dsl_info
 
   resources :charts 
+  
 
   get "/comparison", to: "comparison#index"
   get "/about", to: "about#index"

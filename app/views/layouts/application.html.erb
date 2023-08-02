@@ -17,9 +17,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-  <meta name="turbolinks-cache-control" content="no-cache">
+    <meta name="turbolinks-cache-control" content="no-cache">
 
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 
 
 
@@ -28,6 +28,8 @@
   <body>
   <%= render "layouts/navbar"%>
     <main class="<%=controller_name != "dsl_info" ? "container" : ""%>">
+      
+
       <%= yield %>
 
       

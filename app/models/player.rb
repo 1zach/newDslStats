@@ -1,9 +1,20 @@
 class Player < ApplicationRecord
     include ActionView::Helpers::NumberHelper
+    include PgSearch::Model
 
     validates :name, uniqueness: true
     has_many :stats, dependent: :destroy
     has_many :seasons, through: :stats
+
+    
+
+    pg_search_scope :search_by_name,
+                    against: [:name],
+                    using: {
+                        :tsearch => {prefix: true},
+                        :trigram => {threshold: 0.3}
+                    }
+                      
 
 
     def totals

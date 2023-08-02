@@ -1,0 +1,31 @@
+
+    <% @stats.each do |player| %>
+        <%= content_tag :tr, id: "stats" do %>
+          <td class="text-left py-1 px-2 sticky left-0 bg-white" id = "players-name"><%=link_to player.player.name, player_path(player.player_id) %></td>
+          <td class="text-left py-1 px-2" id = "players-team"><%= player.team %></td>
+          <td class="text-left py-1 px-2"><%= player.years %></td>
+          <td class="text-left py-1 px-2"><%= player.games %></td>
+          <td class="text-left py-1 px-2"><%= player.atbat %></td>
+          <td class="text-left py-1 px-2" id="hits"><%= player.hits %></td>
+          <td class="text-left py-1 px-2"><%= player.runs %></td>
+          <td class="text-left py-1 px-2"><%= player.singles %></td>
+          <td class="text-left py-1 px-2"><%= player.doubles %></td>
+          <td class="text-left py-1 px-2"><%= player.triples %></td>
+          <td class="text-left py-1 px-2"><%= player.homeruns %></td>
+          <td class="text-left py-1 px-2"><%= player.rbi %></td>
+          <td class="text-left py-1 px-2"><%= player.tb %></td>
+          <td class="text-left py-1 px-2"><%= player.k %></td>
+          <td class="text-left py-1 px-2"><%= player.sac %></td>
+          <td class="text-left py-1 px-2"><%= player.gwrbi %></td>
+          <td class="text-left py-1 px-2"><%= number_with_precision(player.avg, precision: 3) %></td>
+          <td class="text-left py-1 px-2"><%= number_with_precision(player.obp, precision: 3) %></td>
+          <td class="text-left py-1 px-2"><%= number_with_precision(player.slg, precision: 3) %></td>
+          <td class="text-left py-1 px-2"><%= number_with_precision(player.ops, precision: 3) %></td>
+          
+        <%end%>
+      <% end%>
+   
+
+      
+
+  
