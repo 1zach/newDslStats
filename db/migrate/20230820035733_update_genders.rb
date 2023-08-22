@@ -8,7 +8,7 @@ class UpdateGenders < ActiveRecord::Migration[7.0]
       player.update(gender: row['gender'])
       p "Name: #{player.name} Gender: #{player.gender}"
     else
-      p "No #{player.name}"
+      p "No #{row['name']}"
     end
     end
   end
