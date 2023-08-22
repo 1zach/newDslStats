@@ -47,12 +47,13 @@ class AddCoachesToTeamTable < ActiveRecord::Migration[7.0]
       player = Player.find_by(name: team[1])
       p player
       player_id = player.id
-
+      p team[0]
       if player_id.present?
-        team = Team.find_by(team_name: team[0])
-        if team.present?
+        coaches_team = Team.find_by(team_name: team[0])
+        p coaches_team
+        if coaches_team.present?
         team.update(coach_id: player_id)
-        p team
+        p coaches_team
         p "#{player.name} coached #{team.team_name}"
         else
           p "No team for #{player.name}"
