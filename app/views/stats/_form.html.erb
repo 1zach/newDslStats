@@ -1,11 +1,8 @@
-<%= form_with url: stats_path, method: :get, class: "d-flex pb-2", data: {"turbo": false} do %>
-      <label for="Players with at least 'X' seasons">Players with at least</label>
-      
-      
-      
+<%= form_with url: send("stats_#{action_name}_path"), method: :get, id: "player-form", class: "d-flex", data: {"turbo": false}, sort: params[:sort] do %>
+      <label for="Players with at least 'X' seasons"></label>
       <div class="relative inline-flex self-center">
        
-      <select name="query_seasons" id="seasons" class = "font-medium rounded border-2 border-[#50AE26] text-gray-600 h-7 w-20 pl-3 pr-3 mx-3 bg-white hover:border-gray-400 focus:outline-none appearance-none after:outline-none">
+      <select name="query_seasons" id="seasons" class = "font-medium rounded border-2 border-[#50AE26] text-gray-600 h-7 w-20 pl-3 pr-3 mr-1 bg-white hover:border-gray-400 focus:outline-none appearance-none after:outline-none">
         <option value="0" selected="selected"><%=params[:query_seasons] ? params[:query_seasons] : 6%></option>
         <option value="9">9</option>
         <option value="8">8</option>
@@ -17,8 +14,15 @@
         <option value="2">2</option>
         <option value="1">1</option>
       </select>
-      <label for="seasons" class = "">seasons in the DSL</label>
+      <label for="seasons" class = "">seasons</label>
  
+<%end%>
 
-      <%= submit_tag "Search", class: "mx-3 px-2 border-1 bg-[#50AE26] border-gray-800 hover:bg-gray-600 text-white"%>
-  <% end %>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+  $(document).ready(function() {
+    $('#player-form').on('change', function() {
+      $('#player-form').submit(); // Trigger form submission
+    });
+  });
+</script>

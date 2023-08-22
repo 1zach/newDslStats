@@ -1,19 +1,78 @@
 
 <div class ="<%=controller_name === "dsl_info" ? "sticky top-0" : ""%>">
 <div class = "w-100vw bg-[#50AE26] px-2 m:px-32 py-2 font-semibold"><%=link_to image_tag("fg.png", size: "50x50", class: "inline-block"), root_path%><span class = "pl-2"><%=link_to "DSL", root_path%></span><%=link_to "GRAPHS", root_path, class:"text-white pr-2"%></div>
-  <div class = "w-100vw bg-black px-2 m:px-32 py-2 text-white font-semibold md:flex md:justify-between">
-    <div class= "md:flex md:gap-3 grid grid-cols-2">
-      <%=link_to "Stats", stats_path, class: "hover:text-[#50AE26] active:text-blue"%>
+  <div class = "w-100vw bg-black px-2 m:px-32 py-2 text-white font-semibold md:flex gap-3">
+    <div class= "hidden md:flex md:gap-3">
+      <%=link_to "Stats", stats_all_path, class:"peer block hover:text-[#50AE26] active:text-blue px-2"%>
+        <div class="hidden rounded peer-hover:block absolute hover:flex flex-col bg-black px-2 mt-6">
+          <%=link_to "All", stats_all_path, class:"block px-2 py-2 text-white hover:bg-gray-800"%>
+          <%=link_to "Male", stats_male_path, class:"block px-2 py-2 text-white hover:bg-gray-800"%>
+          <%=link_to "Female", stats_female_path, class:"block px-2 py-2 text-white hover:bg-gray-800"%>
+        </div>
+      
+      <%=link_to "Seasons", seasons_path, class: "hover:text-[#50AE26] active:text-blue px-2"%>
+      <%=link_to "Eras", eras_path, class: "hover:text-[#50AE26] active:text-blue px-2"%>
+      <%=link_to "All", every_index_path, class: "hover:text-[#50AE26] active:text-blue px-2"%>
+      <%=link_to "LeaderBoards", root_path, class: "hover:text-[#50AE26] active:text-blue px-2"%>
+      <%=link_to "Comparisons", comparison_path, class: "hover:text-[#50AE26] active:text-blue px-2"%>
+      <%=link_to "Teams", teams_path, class: "hover:text-[#50AE26] active:text-blue px-2"%>
+      <div>
+      <%=link_to "About", about_path, class: "hidden md:flex hover:text-[#50AE26] active:text-blue px-2"%>
+      
+  </div>
+  </div>
+
+   <div class="md:hidden flex items-center">
+	  <button class="outline-none mobile-menu-button my-2">
+		<svg
+			class="w-6 h-6 text-white"
+			x-show="!showMenu"
+			fill="none"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			stroke-width="2"
+			viewBox="0 0 24 24"
+			stroke="currentColor"
+		>
+		<path d="M4 6h16M4 12h16M4 18h16"></path>
+		</svg>
+	</button>
+</div>
+  <div class="hidden mobile-menu absolute top-full w-full bg-black left-0 p-4 rounded-b">
+	  <ul class="flex flex-col gap-3">
+	    <%=link_to "Stats", stats_path, class: "hover:text-[#50AE26] active:text-blue"%>
+	    <%=link_to "Male Stats", stats_male_path, class: "hover:text-[#50AE26] active:text-blue pl-3"%>
+	    <%=link_to "Female Stats", stats_female_path, class: "hover:text-[#50AE26] active:text-blue pl-3"%>
       <%=link_to "Seasons", seasons_path, class: "hover:text-[#50AE26] active:text-blue"%>
       <%=link_to "Eras", eras_path, class: "hover:text-[#50AE26] active:text-blue"%>
       <%=link_to "All", every_index_path, class: "hover:text-[#50AE26] active:text-blue"%>
       <%=link_to "LeaderBoards", root_path, class: "hover:text-[#50AE26] active:text-blue"%>
       <%=link_to "Comparisons", comparison_path, class: "hover:text-[#50AE26] active:text-blue"%>
-  </div>
-  <div>
+      <%=link_to "Teams", teams_path, class: "hover:text-[#50AE26] active:text-blue"%>
       <%=link_to "About", about_path, class: "hover:text-[#50AE26] active:text-blue"%>
-  </div>
+	</ul>
+</div>
   </div>
   </div>
 
+<script type="text/javascript">
+	hamburgerMenu = () => {// Grab HTML Elements
+	const menuBtn = document.querySelector("button.mobile-menu-button");
+	const menu = document.querySelector(".mobile-menu");
 
+	// Add Event Listeners
+
+  const toggleMenu = () => {
+    menu.classList.toggle("hidden")
+  }
+	menuBtn.addEventListener("click", () => {
+	menu.classList.toggle("hidden");
+	});
+  menuBtn.removeEventListener("click", () => {
+    menu.classList.toggle("hidden")
+  })
+
+  }
+
+  hamburgerMenu()
+</script>

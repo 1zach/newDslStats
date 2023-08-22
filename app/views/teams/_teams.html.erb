@@ -1,0 +1,86 @@
+<div class = "d-flex flex-column">
+  <h1 class = "text-2xl md:text-6xl my-4 p-2 text-center bg-[#50AE26] text-white w-1/2 place-self-center" >Teams </h1>
+    <h2 class = "text-l md:text-xl text-center w-1/2 place-self-center">This page displays team totals.  You can click the categories to re-sort the table. </h2>
+
+
+  <%# <h2 class = "py-4">You are seeing stats from the year <span class="font-bold"><%=params[:years] ? params[:years] : 2023 </span> sorted by <span class="font-bold capitalize"><%=params[:sort] ? params[:sort] : "name"</span></h2> %>
+  <div class="py-4">
+  </div>
+  <div class="flex gap-2">
+  <%=link_to "Combined", teams_path, class: "rounded w-40 my-3 text-center justify-center p-2 outline-4 border-1 bg-[#50AE26] border-gray-800 hover:bg-black text-white active:bg-black #{'bg-black' if current_page?(teams_path)}"%>
+  <%=link_to "All Seasons", teams_all_path, class: "rounded w-40 text-center justify-center my-3 outline-4 p-2 border-1 bg-[#50AE26] border-gray-800 hover:bg-black text-white active:bg-black #{'bg-black' if current_page?(teams_all_path)}"%>
+  <%=link_to "By Coach", teams_coach_path, class: "rounded w-40 text-center justify-center my-3 outline-4 p-2 border-1 bg-[#50AE26] border-gray-800 hover:bg-black text-white #{'bg-black' if current_page?(teams_coach_path)}"%>
+  </div>
+<div id="players", class= "shadow rounded border-b border-gray-200 overflow-x-auto" do >
+  <table class="table min-w-full bg-white tablesorter" id = "myTable">
+  <div id = "form">
+    <thead class="sticky top-0 bg-[#50AE26] text-white" >
+    <% headers = [
+      { id: "team-name", title: "Name", sort: "team_id" },
+      { id: "team-seasons", title: "Years", sort: "total_years" },
+      { id: "team-games", title: "G", sort: "total_games" },
+      { id: "team-atbats", title: "AB", sort: "total_atbats" },
+      { id: "team-hits", title: "H", sort: "total_hits" },
+      { id: "team-runs", title: "R", sort: "total_runs" },
+      { id: "team-single", title: "1B", sort: "total_singles" },
+      { id: "team-double", title: "2B", sort: "total_doubles" },
+      { id: "team-triple", title: "3B", sort: "total_triples" },
+      { id: "team-homeruns", title: "HR", sort: "total_homeruns" },
+      { id: "team-rbi", title: "RBI", sort: "total_rbi" },
+      { id: "team-k", title: "TB", sort: "total_tb" },
+      { id: "team-k", title: "K", sort: "total_k" },
+      { id: "team-sac", title: "SAC", sort: "total_sac" },
+      { id: "team-gwrbi", title: "GW", sort: "total_gwrbi" },
+      { id: "team-avg", title: "AVG", sort: "avg" },
+      { id: "team-slg", title: "SLG", sort: "slg" },
+      { id: "team-obp", title: "OBP", sort: "obp" },
+      { id: "team-obp", title: "OPS", sort: "ops" }
+    ] %>
+
+      <tr data-controller="sort">
+        <% headers.each do |header| %>
+      <th id="<%= header[:id] %>" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+        <%= link_to header[:title], sort: header[:sort], years: params[:years], order: sortable %>
+      </th>
+    <% end %>
+      </tr>
+    </thead>
+    
+    <tbody class="text-gray-700">
+      <% @teams.each do |team| %>
+        <tr class = "hover:bg-gray-200">
+       
+          <%# <td class="text-left py-1 px-2 sticky left-0 bg-white" id = "team-name"><%=link_to team.team.team_name, team_path(team.team_id)</td>%>
+           
+          <%if team.respond_to?(:coach_name) %>
+                    <td class="text-left py-1 px-2"><%= team.coach_name %></td> 
+          <%else%>
+                    <td class="text-left py-1 px-2"><%= team.team.team_name%></td>
+          <%end%>
+          <td class="text-left py-1 px-2"><%= team.total_years %></td>
+          <td class="text-left py-1 px-2"><%= team.total_games %></td>
+          <td class="text-left py-1 px-2"><%= team.total_atbats %></td>
+          <td class="text-left py-1 px-2"><%= team.total_hits %></td>
+          <td class="text-left py-1 px-2"><%= team.total_runs %></td>
+          <td class="text-left py-1 px-2"><%= team.total_singles %></td>
+          <td class="text-left py-1 px-2"><%= team.total_doubles %></td>
+          <td class="text-left py-1 px-2"><%= team.total_triples %></td>
+          <td class="text-left py-1 px-2"><%= team.total_homeruns %></td>
+          <td class="text-left py-1 px-2"><%= team.total_rbi %></td>
+          <td class="text-left py-1 px-2"><%= team.total_tb %></td>
+          <td class="text-left py-1 px-2"><%= team.total_k %></td>
+          <td class="text-left py-1 px-2"><%= team.total_sac %></td>
+          <td class="text-left py-1 px-2"><%= team.total_gwrbi %></td>
+          <td class="text-left py-1 px-2"><%= number_with_precision(team.avg, precision: 3) %></td>
+          <td class="text-left py-1 px-2"><%= number_with_precision(team.slg, precision: 3) %></td>
+          <td class="text-left py-1 px-2"><%= number_with_precision(team.obp, precision: 3) %></td>
+          <td class="text-left py-1 px-2"><%= number_with_precision(team.ops, precision: 3) %></td>
+          
+          
+        </tr>
+        
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>

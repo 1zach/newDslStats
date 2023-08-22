@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_29_112855) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_20_035733) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -41,10 +41,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_29_112855) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "coaches", force: :cascade do |t|
+    t.text "coach_name"
+    t.bigint "player_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_coaches_on_player_id"
+  end
+
   create_table "players", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.string "gender"
   end
 
   create_table "seasons", force: :cascade do |t|
@@ -78,8 +87,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_29_112855) do
     t.bigint "season_id", null: false
     t.bigint "player_id", null: false
     t.string "team"
+    t.bigint "team_id"
     t.index ["player_id"], name: "index_stats_on_player_id"
     t.index ["season_id"], name: "index_stats_on_season_id"
+    t.index ["team_id"], name: "index_stats_on_team_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "team_name"
+    t.bigint "coach_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -94,6 +112,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_29_112855) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "coaches", "players"
   add_foreign_key "stats", "players"
   add_foreign_key "stats", "seasons"
+  add_foreign_key "stats", "teams"
+  add_foreign_key "teams", "coaches"
 end

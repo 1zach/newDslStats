@@ -61,7 +61,7 @@ class PlayersController < ApplicationController
           
 
           @teams = @player.stats.sort_by {|season| season.years}
-          @teams = @teams.map {|season| [season.years, season.team]}
+          @teams = @teams.map {|season| [season.years, season.team.team_name]}
           @teams = @teams.join(' - ')
 
           @yearsplayed = @player.stats.map {|season| season.years}
