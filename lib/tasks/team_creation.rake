@@ -42,7 +42,7 @@ namespace :team_creation do
     ["Double Trouble", "Warner, Tim"]]
 
     teams.each do |team|
-      coach = Coach.find_by(name: team[1])
+      coach = Coach.find_by(coach_name: team[1])
         unless Team.exists?(team_name: team[0])
           team = Team.create(team_name: team[0], coach_id: coach.id)
 
