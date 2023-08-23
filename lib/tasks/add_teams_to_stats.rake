@@ -11,11 +11,17 @@ namespace :add_teams_to_stats do
           team = Team.find_by(team_name: team_string)
             if team
               puts "Found #{team} in database"
+              stat.save(validate: false)
+              stat.update(team_id: team.id)
             else
               puts "Did not find #{team}"
             end
-          stat.update(team_id: team.id)
-          
+
+            if stat.errors.any?
+              puts "Error updating stat: #{stat.errors.full_messages.join(', ')}"
+            else
+              puts "Updated team_id for stat with ID #{stat.id}"
+            end
         end
     end
 end
