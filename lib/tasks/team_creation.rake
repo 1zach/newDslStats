@@ -8,4 +8,5 @@ namespace :team_creation do
           p team.team_name
         end
       end
+    end
 end
