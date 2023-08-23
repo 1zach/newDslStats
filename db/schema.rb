@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_20_035733) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_23_123714) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -86,7 +86,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_035733) do
     t.integer "years"
     t.bigint "season_id", null: false
     t.bigint "player_id", null: false
-    t.string "team"
+    t.string "team_string"
     t.bigint "team_id"
     t.index ["player_id"], name: "index_stats_on_player_id"
     t.index ["season_id"], name: "index_stats_on_season_id"

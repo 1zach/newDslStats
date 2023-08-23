@@ -9,6 +9,7 @@ ActiveAdmin.register Stat do
   #
   # or
   #
+
   permit_params do
     permitted = [:season, :games, :atbat, :runs, :hits, :singles, :doubles, :triples, :homeruns, :rbi, :k, :tb, :sac, :gwrbi, :avg, :obp, :slg, :ops, :years, :season_id, :player_id, :team]
     permitted << :other if params[:action] == 'create' && current_user.admin?
