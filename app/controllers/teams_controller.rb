@@ -54,8 +54,6 @@ class TeamsController < ApplicationController
     team("show", team_search)
   end
 
-  
-
   private
 
   def team(page, team)

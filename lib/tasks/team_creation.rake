@@ -7,7 +7,13 @@ namespace :team_creation do
         p team_name
         unless Team.exists?(team_name: team_name)
           team = Team.create(team_name: team_name)
-          p team.team_name
+
+          if team.errors.any?
+            puts "Errors: #{team.errors.full_messages.join(', ')}"
+          else
+            puts "#{team.team_name} Team created successfully!"
+          end
+          
         end
       end
     end
