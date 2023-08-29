@@ -11,3 +11,34 @@
 }
 */
 
+
+/*pagy navbar styling */
+
+.pagy-nav.pagination {
+  @apply isolate inline-flex -space-x-px rounded-md shadow-sm pb-3;
+}
+
+.page.next a {
+  @apply relative inline-flex items-center rounded-r-md px-2 py-2 text-lg font-medium text-gray-500 hover:bg-gray-50 focus:z-20;
+}
+
+.page.prev a {
+  @apply relative inline-flex items-center rounded-l-md px-2 py-2 text-lg font-medium text-gray-500 hover:bg-gray-50 focus:z-20;
+}
+
+.page.next.disabled {
+  @apply relative inline-flex items-center rounded-r-md px-2 py-2 text-lg font-medium text-gray-500 hover:bg-gray-50 focus:z-20;
+}
+
+.page.prev.disabled {
+  @apply relative inline-flex items-center rounded-l-md px-2 py-2 text-lg font-medium text-gray-500 hover:bg-gray-50 focus:z-20;
+}
+
+.page a, .page.gap {
+  @apply   text-gray-500 hover:bg-gray-50 relative inline-flex items-center  px-4 py-2 text-lg font-medium focus:z-20;
+}
+
+.page.active {
+  @apply z-10 text-slate-800 relative inline-flex items-center  px-4 py-2 text-lg font-medium focus:z-20;
+}
+

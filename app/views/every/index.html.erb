@@ -32,7 +32,7 @@
     <thead class="bg-[#50AE26] sticky top-0 text-white">
       <tr>
         <% sortable_columns.each do |column_name, column_param| %>
-          <th id="players-<%= column_param %>" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+          <th id="players-<%= column_param %>" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer <%= ' animate-pulse' if params[:sort] == column_param %>">
           <%= link_to column_name, sort: column_param, search: params[:search] %>
       </th>
     <% end %>
@@ -44,11 +44,14 @@
         <%= render partial: 'every_search_results', stats: @stats %>  
     <%end%>
     <%# </tbody> %>
-    
   </table>
   
 </div>
+ <div class="flex justify-center pb-3" >
+    <%== pagy_nav(@pagy) if @pagy.pages > 1%>
+  </div>
 </div>
+
 
 
 

@@ -8,11 +8,9 @@ class DslInfoController < ApplicationController
         elsif params[:gender_toggle] == "1"
             players = Player.where(gender: "m").joins(:stats)
             single_season_player = Stat.joins(:player).where(player: { gender: "m"})
-
         else
            players = Player.where(gender: "f").joins(:stats)
-           single_season_player = Stat.joins(:player)
-           
+           single_season_player = Stat.joins(:player) 
         end
 
 
