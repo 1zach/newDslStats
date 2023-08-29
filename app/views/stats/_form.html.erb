@@ -1,4 +1,4 @@
-<%= form_with url: send("stats_#{action_name}_path"), method: :get, id: "player-form", class: "d-flex", data: {"turbo": false}, sort: params[:sort] do %>
+<%= form_with url: send("stats_#{action_name}_path"), method: :get, id: "player-form", class: "d-flex", data: {"turbo": false}, sort: params[:sort], query_seasons: params[:query_seasons] do %>
       <label for="Players with at least 'X' seasons"></label>
       <div class="relative inline-flex self-center">
        
@@ -18,11 +18,11 @@
  
 <%end%>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-  $(document).ready(function() {
-    $('#player-form').on('change', function() {
-      $('#player-form').submit(); // Trigger form submission
-    });
-  });
+<script>
+  document.addEventListener('turbo:load', function (){
+  const playerForm = document.getElementById('player-form')
+    playerForm.addEventListener('change', () => {
+      playerForm.submit();
+    })
+  })
 </script>
