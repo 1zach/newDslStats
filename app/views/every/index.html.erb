@@ -24,8 +24,38 @@
 
 <div class="d-flex flex-column" data-controller="search">
 <h1 class = "text-2xl md:text-6xl my-4 p-2 text-center bg-[#50AE26] text-white w-1/2 place-self-center" >All Seasons</h1>
-    <p class = "text-l md:text-xl text-center p-1 w-1/2 place-self-center">This page allows you to see all <%=@stats.count%> stat lines created over <%=@stats.pluck(:years).uniq.count%> years. </h2>
+    <p class = "text-l md:text-xl text-center p-1 w-1/2 place-self-center">This page allows you to see all the single season stat lines created over the last <%=@stats.pluck(:years).uniq.count%> years. </h2>
 <%= render partial: "every/search_form" %>
+
+<div class="d-flex flex-row gap-3 font-light pb-1 pt-3">
+<div>Female</div>
+<%= form_with url: every_index_path, class: "inline z-0", id: "gender_form", method: :get do |form| %>
+  <label class="relative inline-flex items-center cursor-pointer">
+    <%= form.check_box :gender_toggle, class: "sr-only peer z-0" %>
+      <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-blue-300  rounded-full peer  peer-checked:after:translate-x-full peer-checked:after:border-[#50AE26] after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[#50AE26] after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#50AE26] z-0" id="toggle"></div>
+    </label>
+<% end %>
+<div>Male</div>
+</div>
+
+<script>
+
+document.addEventListener('turbo:load', function() {
+  const genderToggle = document.getElementById('gender_toggle');
+  const genderForm = document.getElementById('gender_form')
+  const storedGender = localStorage.getItem('selectedGender') || 'female';
+ 
+  genderToggle.checked = storedGender === 'male';
+
+
+  genderToggle.addEventListener('change', () => {
+    const storedGender = genderToggle.checked ? 'male' : 'female';
+    localStorage.setItem('selectedGender', storedGender);
+    genderForm.submit();
+  });
+  });
+</script>
+
 <div id="players"  class="shadow rounded border-b border-gray-200 my-4 overflow-x-auto" >
  
   <table class="table min-w-full bg-white tablesorter" id="myTable" >
@@ -33,7 +63,7 @@
       <tr>
         <% sortable_columns.each do |column_name, column_param| %>
           <th id="players-<%= column_param %>" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer <%= ' animate-pulse' if params[:sort] == column_param %>">
-          <%= link_to column_name, sort: column_param, search: params[:search] %>
+          <%= link_to column_name, sort: column_param, search: params[:search], gender_toggle: params[:gender_toggle] %>
       </th>
     <% end %>
       </tr>

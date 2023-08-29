@@ -2,9 +2,15 @@ class EveryController < ApplicationController
 
     def index
 
-        ordered_stats = Stat.joins(:player).order(:name, :years)
+        ordered_stats = Stat.joins(:player).order(:name, :years).where(gender: "f")
 
-        
+        if params[:gender_toggle] == "0"
+            players = Player.where(gender: "f").joins(:stats)
+        elsif params[:gender_toggle] == "1"
+            players = Player.where(gender: "m").joins(:stats)
+        else
+           players = Player.where(gender: "f").joins(:stats)
+        end
         
         if params[:clear].present?
             @stats=perform_search_query("")
@@ -31,9 +37,21 @@ class EveryController < ApplicationController
     end
 
     def perform_search_query(search)
-        @stats = Stat.joins(:player).where("players.name ILIKE :search OR players.name ILIKE :flipped_search",
-            search: "%#{search}%",
-            flipped_search: "%#{search.split.reverse.join(', ')}%")
+        if params[:gender_toggle].present?
+            if params[:gender_toggle] == "0"
+                @stats = Stat.joins(:player).where("players.name ILIKE :search OR players.name ILIKE :flipped_search",
+                search: "%#{search}%",
+                flipped_search: "%#{search.split.reverse.join(', ')}%").where("players.gender = 'f'")
+            elsif params[:gender_toggle] == "1"
+                @stats = Stat.joins(:player).where("players.name ILIKE :search OR players.name ILIKE :flipped_search",
+                search: "%#{search}%",
+                flipped_search: "%#{search.split.reverse.join(', ')}%").where("players.gender = 'm'")
+            end
+        else
+            @stats = Stat.joins(:player).where("players.name ILIKE :search OR players.name ILIKE :flipped_search",
+                search: "%#{search}%",
+                flipped_search: "%#{search.split.reverse.join(', ')}%")
+        end
     end
 
 end

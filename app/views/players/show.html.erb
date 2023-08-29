@@ -138,7 +138,7 @@
     </tbody>
   </table>
 
-<div class="grid grid-cols-1 md:grid-cols-2  p-2 gap-2">
+<div class="grid grid-cols-1 md:grid-cols-2 p-2 gap-2">
 <%= column_chart [{name: "Player Atbats", data: @ab}, {name: "Avg Player Atbats", data: @abavg}], title: "Atbats", min: "null", max: "null", colors: ["#50AE26", "black"]%>
 <%= column_chart [{name: "Player Hits", data: @hits}, {name: "Avg Player Hits", data: @hitsavg}], title: "Hits", min: "null", max: "null", colors: ["#50AE26", "black"]%>
 <%= column_chart [{name: "Player Runs", data: @runs}, {name: "Avg Player Runs", data: @runsavg}], title: "Runs", min: "null", max: "null", colors: ["#50AE26", "black"]%>
