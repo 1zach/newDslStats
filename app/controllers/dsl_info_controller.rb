@@ -10,7 +10,7 @@ class DslInfoController < ApplicationController
             single_season_player = Stat.joins(:player).where(player: { gender: "m"})
         else
            players = Player.where(gender: "f").joins(:stats)
-           single_season_player = Stat.joins(:player) 
+           single_season_player = Stat.joins(:player).where(player: {gender: "f"})
         end
 
 
@@ -55,10 +55,10 @@ class DslInfoController < ApplicationController
 
          @singleavg = single_season_player.sort_by { |stat| -stat.avg}.first(5)
 
-         respond_to do |format|
-            format.turbo_stream { render turbo_stream: turbo_stream.replace("leaderboards", partial: "player_leaderboards", locals: { players: players }) }
-            format.html {render 'index', locals: {players: players}}
-          end
+        #  respond_to do |format|
+        #     format.turbo_stream { render turbo_stream: turbo_stream.replace("leaderboards", partial: "player_leaderboards", locals: { players: players }) }
+        #     format.html {render 'index', locals: {players: players}}
+        #   end
     end
 
     def average(player)
