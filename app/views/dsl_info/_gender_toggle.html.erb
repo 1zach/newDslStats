@@ -1,6 +1,5 @@
 <div class="d-flex flex-row gap-3 font-light pb-1">
 <div>Female</div>
-
 <%= form_with url: dsl_info_index_path, class: "inline z-0", id: "gender_form", method: :get do |form| %>
   <label class="relative inline-flex items-center cursor-pointer">
     <%= form.check_box :gender_toggle, class: "sr-only peer z-0" %>

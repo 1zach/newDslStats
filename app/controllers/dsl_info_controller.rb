@@ -1,7 +1,5 @@
 class DslInfoController < ApplicationController
     def index
-        
-
         if params[:gender_toggle] == "0"
             players = Player.where(gender: "f").joins(:stats)
             single_season_player = Stat.joins(:player).where(player: { gender: "f"})
@@ -12,8 +10,6 @@ class DslInfoController < ApplicationController
            players = Player.where(gender: "f").joins(:stats)
            single_season_player = Stat.joins(:player).where(player: {gender: "f"})
         end
-
-
         # females = Player.where(gender: "f").joins(:stats)
         #females_single_season = Stat.joins(:player).where(player: { gender: "f" })
 
@@ -53,7 +49,7 @@ class DslInfoController < ApplicationController
 
          @singledoubles = single_season_player.sort_by {|stat| -stat.doubles}.first(5)
 
-         @singleavg = single_season_player.sort_by { |stat| -stat.avg}.first(5)
+         @singleavg = single_season_player.where("atbat >= ?", 25).sort_by { |stat| -stat.avg}.first(5)
 
         #  respond_to do |format|
         #     format.turbo_stream { render turbo_stream: turbo_stream.replace("leaderboards", partial: "player_leaderboards", locals: { players: players }) }
