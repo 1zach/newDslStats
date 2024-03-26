@@ -30,10 +30,7 @@ class EveryController < ApplicationController
             @stats = @stats.order("#{params[:sort]} DESC")
         end
 
-       
-
         @pagy, @stats = pagy(@stats)
-        
     end
 
     def perform_search_query(search)
@@ -53,5 +50,4 @@ class EveryController < ApplicationController
                 flipped_search: "%#{search.split.reverse.join(', ')}%")
         end
     end
-
 end

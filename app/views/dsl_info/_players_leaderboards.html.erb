@@ -282,4 +282,28 @@
 </table>
     <div class = "w-96 bg-white shadow rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Single Season TB Leaders", every_index_path(sort: "tb", order: "asc")%></div>
 </div>
+
+<div>
+<table class ="w-96 bg-white tablesorter shadow rounded border-b border-gray-200">
+    <thead class = "bg-[#50AE26] text-white">
+    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Rank</th>
+    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Name</th>
+    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Team</th>
+    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Year</th>
+    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">OPS+</th>
+    <thead>
+    <tbody class = "text-gray-700">
+    <%@singleopsPlus.each_with_index do |player, index|%>
+        <tr class="hover:bg-gray-200">
+        <td class="text-left py-1 px-2"><%=index + 1%></td>
+        <td class="text-left py-1 px-2"><%=link_to player.player.name, player_path(player.player)%></td>
+        <td class="text-left py-1 px-2"><%=player.team.team_name%></td>
+        <td class="text-left py-1 px-2"><%=player.years%></td>
+        <td class="text-left py-1 px-2"><%=number_with_precision(player.opsPlus, precision: 0)%></td>
+    </tr>
+    <%end%>
+    <tbody>
+</table>
+    <div class = "w-96 bg-white shadow rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Single Season AVG Leaders", every_index_path(sort: "avg", order: "asc")%></div>
+</div>
 </div>

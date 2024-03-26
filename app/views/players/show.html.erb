@@ -15,7 +15,7 @@
     <thead class="bg-[#50AE26] text-white">
       <tr>
         <th id="players-season" data-tooltip-target = "tooltip-default" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
-          <%= link_to "Year", sort: "year"%>
+          <%= link_to "Year", sort: "year"%><span class="px-3">Team</span>
           <%# <%=render "tooltip", locals: {title: "year"} %>
         </th>
         <th id="players-games" data-tooltip-target = "tooltip-default" class="text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
@@ -92,7 +92,7 @@
     <tbody class="text-gray-700">
       <% @stat.each do |stat| %>
         <tr>
-          <td class="text-left py-1 px-2" id = "season_year"><%= stat.years %></td>
+          <td class="text-left py-1 px-2" id = "season_year"><%= stat.years %><span class="px-2"></span><%=stat.team.team_name%></td>
           <td class="text-left py-1 px-2"><%= stat.games %></td>
           <td class="text-left py-1 px-2"><%= stat.atbat %></td>
           <td class="text-left py-1 px-2" id="hits"><%= stat.hits %></td>

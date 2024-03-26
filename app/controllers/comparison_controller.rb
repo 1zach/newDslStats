@@ -20,8 +20,4 @@ class ComparisonController < ApplicationController
     @season_avg3 = @player3.season_avg
 
   end
-
-
-
-
 end

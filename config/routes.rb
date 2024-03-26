@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :eras
   resources :every
   resources :dsl_info
+  resources :years
   resources :teams do
     collection do
       get 'all'
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
   end
   get 'teams/all', to: 'teams#all', as: :teams_all
   get 'teams/coach', to: 'teams#coach', as: :teams_coach
+
 
   resources :charts 
   

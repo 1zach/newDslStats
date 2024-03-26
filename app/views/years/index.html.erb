@@ -1,0 +1,79 @@
+<div class = "d-flex flex-column">
+  <h1 class = "text-2xl md:text-6xl my-4 p-2 text-center bg-[#50AE26] text-white w-1/2 place-self-center" >Years </h1>
+  <h2 class = "text-l md:text-xl text-center w-1/2 place-self-center">This page displays combined stats for each year dating back to 2015. </h2>
+  <div>
+    <h2 class = "py-4"></h2>
+    
+    
+
+  <% sorting_headers = [
+  { id: "players-name", text: "Year", sort: "year" },
+  { id: "players-games", text: "G", sort: "total_games" },
+  { id: "players-atbats", text: "AB", sort: "total_atbats" },
+  { id: "players-hits", text: "H", sort: "total_hits" },
+  { id: "players-runs", text: "R", sort: "total_runs" },
+  { id: "players-single", text: "1B", sort: "total_singles" },
+  { id: "players-double", text: "2B", sort: "total_doubles" },
+  { id: "players-triple", text: "3B", sort: "total_triples" },
+  { id: "players-homeruns", text: "HR", sort: "total_homeruns" },
+  { id: "players-rbi", text: "RBI", sort: "total_rbi" },
+  { id: "players-k", text: "TB", sort: "total_tb" },
+  { id: "players-k", text: "K", sort: "total_k" },
+  { id: "players-sac", text: "SAC", sort: "total_sac" },
+  { id: "players-gwrbi", text: "GW", sort: "total_gwrbi" },
+  { id: "players-avg", text: "AVG", sort: "avg" },
+  { id: "players-slg", text: "SLG", sort: "slg" },
+  { id: "players-obp", text: "OBP", sort: "obp" },
+  { id: "players-ops", text: "OPS", sort: "ops" }
+] %>
+
+ 
+<div id="players", class= "shadow rounded border-b border-gray-200 overflow-x-auto md:overflow-x-clip" do >
+  <table class="table min-w-full bg-white tablesorter" id = "myTable">
+  <div id = "form">
+    <thead class="sticky top-0 bg-[#50AE26] text-white" >
+      <tr data-controller="sort">
+        <% sorting_headers.each do |header| %>
+          <th id="<%= header[:id] %>" class="bg-[#50AE26] sticky top-0 text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">
+            <%= link_to header[:text], sort: header[:sort], gender: params[:gender], query_seasons: params[:query_seasons], order: sortable %>
+          </th>
+        <% end %>
+      </tr>
+    </thead>
+    
+    <tbody class="text-gray-700">
+      <% @years.each do |year| %>
+        <tr class = "hover:bg-gray-200">
+          <td class="text-left py-1 px-2"><%= year.year %></td>         
+          <td class="text-left py-1 px-2"><%= year.total_games %></td>         
+          <td class="text-left py-1 px-2"><%= year.total_atbats %></td>         
+          <td class="text-left py-1 px-2"><%= year.total_hits %></td>         
+          <td class="text-left py-1 px-2"><%= year.total_runs %></td>         
+          <td class="text-left py-1 px-2"><%= year.total_singles %></td>         
+          <td class="text-left py-1 px-2"><%= year.total_doubles %></td>         
+          <td class="text-left py-1 px-2"><%= year.total_triples %></td>         
+          <td class="text-left py-1 px-2"><%= year.total_homeruns %></td>         
+          <td class="text-left py-1 px-2"><%= year.total_rbi %></td>         
+          <td class="text-left py-1 px-2"><%= year.total_tb %></td>         
+          <td class="text-left py-1 px-2"><%= year.total_k %></td>         
+          <td class="text-left py-1 px-2"><%= year.total_sac %></td>         
+          <td class="text-left py-1 px-2"><%= year.total_gwrbi %></td>          
+          <td class="text-left py-1 px-2"><%= number_with_precision(year.avg, precision: 3) %></td>          
+          <td class="text-left py-1 px-2"><%= number_with_precision(year.slg, precision: 3) %></td>          
+          <td class="text-left py-1 px-2"><%= number_with_precision(year.obp, precision: 3) %></td>          
+          <td class="text-left py-1 px-2"><%= number_with_precision(year.ops, precision: 3) %></td>          
+       
+         
+        </tr>
+        
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="py-4">
+<%=column_chart @years_data, title:"OPS", library: { xAxis: { format: '####' } }%>
+</div>
+
+
+</div>
+

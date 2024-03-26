@@ -25,9 +25,6 @@ class SeasonsController < ApplicationController
         end
     end
 
-
-
-
     def average(player)
         if player.sum(:hits) == 0 || player.sum(:atbat) == 0
             return 0.00
@@ -48,7 +45,6 @@ class SeasonsController < ApplicationController
       if player.sum(:atbat) == 0
         return 0.00
       else
-       
         ((player.sum(:singles) + player.sum(:doubles) + player.sum(:triples) + player.sum(:homeruns)).to_f / (player.sum(:atbat) + player.sum(:sac))).to_f.round(3)
       end
     end

@@ -40,7 +40,6 @@ class Player < ApplicationRecord
         avg = hits.to_f/atbat
         stringavg = avg.to_s
         stringavg.slice!(2, 3).to_i / 1000.to_f
-        
     end
 
 end

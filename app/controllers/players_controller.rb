@@ -1,5 +1,5 @@
 class PlayersController < ApplicationController
-
+#Career Stats come from here
     def index
         @players = Player.all
         @filtered = Player.joins(:seasons).where("seasons.count > 7")

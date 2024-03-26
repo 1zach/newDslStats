@@ -47,9 +47,17 @@ class DslInfoController < ApplicationController
         @singletb = single_season_player.sort_by{|stat| -stat.tb}
         @singletb = @singletb.first(5)
 
-         @singledoubles = single_season_player.sort_by {|stat| -stat.doubles}.first(5)
+        @singledoubles = single_season_player.sort_by {|stat| -stat.doubles}.first(5)
 
-         @singleavg = single_season_player.where("atbat >= ?", 25).sort_by { |stat| -stat.avg}.first(5)
+        @singleavg = single_season_player.where("atbat >= ?", 25).sort_by { |stat| -stat.avg}.first(5)
+
+        opsPlus_array = single_season_player.where("atbat >= ?", 25).map do |stat|
+            [stat, stat.opsPlus]
+        end
+
+        sorted_opsPlus = opsPlus_array.sort_by { |pair| -pair[1] }  # Sort in descending order
+
+        @singleopsPlus = sorted_opsPlus.first(5).map(&:first)  # Extracting only the player records
 
         #  respond_to do |format|
         #     format.turbo_stream { render turbo_stream: turbo_stream.replace("leaderboards", partial: "player_leaderboards", locals: { players: players }) }
