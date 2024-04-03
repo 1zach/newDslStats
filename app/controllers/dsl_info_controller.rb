@@ -59,10 +59,35 @@ class DslInfoController < ApplicationController
 
         @singleopsPlus = sorted_opsPlus.first(5).map(&:first)  # Extracting only the player records
 
+        slgPlus_array = single_season_player.where("atbat>= ?", 20).map do |stat|
+            [stat, stat.slgPlus]
+        end
+
+        sorted_slgPlus = slgPlus_array.sort_by { |pair| -pair[1]}
+        
+        @singleslgPlus = sorted_slgPlus.first(5).map(&:first)
+
         #  respond_to do |format|
         #     format.turbo_stream { render turbo_stream: turbo_stream.replace("leaderboards", partial: "player_leaderboards", locals: { players: players }) }
         #     format.html {render 'index', locals: {players: players}}
         #   end
+    end
+
+    def adjusted
+        single_season_player = Stat.joins(:player)
+
+        opsPlus_array = single_season_player.where("atbat >= ?", 25).map do |stat|
+            [stat, stat.opsPlus]
+        end
+        sorted_opsPlus = opsPlus_array.sort_by { |pair| -pair[1] }  # Sort in descending order
+        @singleopsPlus = sorted_opsPlus.first(25).map(&:first)  # Extracting only the player records
+        
+        slgPlus_array = single_season_player.where("atbat>= ?", 20).map do |stat|
+            [stat, stat.slgPlus]
+        end
+        sorted_slgPlus = slgPlus_array.sort_by { |pair| -pair[1]}
+        @singleslgPlus = sorted_slgPlus.first(25).map(&:first)
+
     end
 
     def average(player)

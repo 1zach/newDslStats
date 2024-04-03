@@ -10,7 +10,11 @@ class Stat < ApplicationRecord
     end
 
     def opsPlus
-      100*((self.obp/fetch_lg_obp(self.years))+(self.slg/fetch_lg_slg(self.years))-1)
+      100*((self.obp/fetch_lg_obp(self.years))+(self.slg/fetch_lg_slg(self.years)-1))
+    end
+
+    def slgPlus
+      100*(self.slg/fetch_lg_slg(self.years))
     end
 
     private

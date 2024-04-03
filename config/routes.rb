@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "/stats/all", to: "stats#all"
   get "/stats/male", to: "stats#male"
   get "/stats/female", to: "stats#female"
+  get '/dsl_info/adjusted', to:'dsl_info#adjusted'
+
   resources :stats
   resources :players
   resources :seasons
