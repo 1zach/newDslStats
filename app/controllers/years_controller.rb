@@ -35,8 +35,8 @@ class YearsController < ApplicationController
       "AVG(hits::float / atbat) as avg,
       SUM(hits)::float / NULLIF(SUM(atbat), 0) as obp,
       (SUM(singles) + 2 * SUM(doubles) + 3 * SUM(triples) + 4 * SUM(homeruns))::float / NULLIF(SUM(atbat), 0) as slg,
-      (SUM(hits) / SUM(atbat)) + ((SUM(singles) + 2 * SUM(doubles) + 3 * SUM(triples) + 4 * SUM(homeruns))::float / (SUM(atbat))) as ops
-    ").group("years").order("#{new_order} #{session[:current_sort_order]}")
+      (SUM(hits)::float / NULLIF(SUM(atbat), 0) + (SUM(singles) + 2 * SUM(doubles) + 3 * SUM(triples) + 4 * SUM(homeruns))::float / NULLIF(SUM(atbat), 0)) as ops")
+      .group("years").order("#{new_order} #{session[:current_sort_order]}")
 
     @years_data = @years.each_with_object({}) do |year, data|
       data[(year.year)] = year.ops
