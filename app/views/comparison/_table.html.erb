@@ -3,14 +3,20 @@
   <thead>
     <tr class="bg-<%= color %> text-white">
       <th class="md:p-2 text-sm md:text-md"><%=link_to player.name, player_path(player[:id]), class: "hover:text-white"%></th>
-      <th>Total</th>
+      <th class="text-right text-sm md:text-md md:p-2">Total</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="bg-white">
     <% data.map do |k, v| %>
       <tr>
         <td class="capitalize md:p-2 text-sm md:text-md"><%= k %></td>
-        <td class="text-right md:p-2"><%= v %></td>
+        <td class="text-right md:p-2">
+          <% if @highlighted_values && @highlighted_values[k] && @highlighted_values[k][:max_hash] == player.name %>
+            <b><%= v %></b>
+          <% else %>
+            <%= v %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

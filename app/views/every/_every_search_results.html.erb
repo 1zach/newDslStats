@@ -1,6 +1,7 @@
 
-    <% @stats.each do |player| %>
+    <% @stats.each_with_index do |player, index| %>
         <%= content_tag :tr, id: "stats" do %>
+          <td class="text-left py-1 px-2 sticky left-0 bg-white"><%=index + 1%></td>
           <td class="text-left py-1 px-2 sticky left-0 bg-white" id = "players-name"><%=link_to player.player.name, player_path(player.player_id) %></td>
           <td class="text-left py-1 px-2" id = "players-team"><%= player.team.team_name %></td>
           <td class="text-left py-1 px-2"><%= player.years %></td>

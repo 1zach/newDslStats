@@ -57,11 +57,12 @@ document.addEventListener('turbo:load', function() {
 </script>
 
 <div id="players"  class="shadow rounded border-b border-gray-200 my-4 overflow-x-auto" >
- 
   <table class="table min-w-full bg-white tablesorter" id="myTable" >
     <thead class="bg-[#50AE26] sticky top-0 text-white">
       <tr>
+      <th></th>
         <% sortable_columns.each do |column_name, column_param| %>
+          
           <th id="players-<%= column_param %>" class="bg-[#50AE26] text-left sticky top-0 py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer <%= ' animate-pulse' if params[:sort] == column_param %>">
           <%= link_to column_name, sort: column_param, search: params[:search], gender_toggle: params[:gender_toggle] %>
       </th>
