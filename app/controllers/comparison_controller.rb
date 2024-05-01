@@ -12,9 +12,9 @@ class ComparisonController < ApplicationController
     @player3 = Player.includes(:stats).order("stats.runs DESC").third
    end
 
-    @slashes1 = {avg: @player1.avg, slg: @player1.slg, obp: @player1.obp}
-    @slashes2 = {avg: @player2.avg, slg: @player2.slg, obp: @player2.obp}
-    @slashes3 = {avg: @player3.avg, slg: @player3.slg, obp: @player3.obp}
+    @slashes1 = {avg: @player1.avg, slg: @player1.slg, obp: @player1.obp, ops: @player1.ops}
+    @slashes2 = {avg: @player2.avg, slg: @player2.slg, obp: @player2.obp, ops: @player2.ops}
+    @slashes3 = {avg: @player3.avg, slg: @player3.slg, obp: @player3.obp, ops: @player3.ops}
     
     @totals1 = @player1.totals
     @totals2 = @player2.totals
@@ -30,12 +30,12 @@ class ComparisonController < ApplicationController
 
 @highlighted_values = {}
 
-@totals1.each_key do |key|
-  value1 = @totals1[key] || 0
-  value2 = @totals2[key] || 0
-  value3 = @totals3[key] || 0
+@totals1slashes.each_key do |key|
+  value1 = @totals1slashes[key] || 0
+  value2 = @totals2slashes[key] || 0
+  value3 = @totals3slashes[key] || 0
   
-  max_value = [value1, value2, value3].max
+  max_value = [value1, value2, value3].max_by { |num| (num * 1000).to_i }
   max_hash = case max_value
              when value1 then @player1.name
              when value2 then @player2.name

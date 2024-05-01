@@ -58,7 +58,11 @@ class Player < ApplicationRecord
         atbats = self.stats.sum(:atbat)
         sac = self.stats.sum(:sac)
         obp = hits / (atbats + sac).to_f
-        obp = number_with_precision(slg, precision: 3).to_f
+        obp = number_with_precision(obp, precision: 3).to_f
+    end
+
+    def ops
+        number_with_precision(self.slg + self.obp, precision: 3).to_f
     end
 
 
