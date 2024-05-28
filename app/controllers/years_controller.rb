@@ -32,8 +32,8 @@ class YearsController < ApplicationController
       SUM(sac) as total_sac, 
       SUM(gwrbi) as total_gwrbi")
     .select(
-      "AVG(hits::float / atbat) as avg,
-      SUM(hits)::float / NULLIF(SUM(atbat), 0) as obp,
+      "SUM(hits::float) / SUM(atbat) as avg,
+      SUM(hits)::float / (NULLIF(SUM(atbat), 0) + SUM(sac)) as obp,
       (SUM(singles) + 2 * SUM(doubles) + 3 * SUM(triples) + 4 * SUM(homeruns))::float / NULLIF(SUM(atbat), 0) as slg,
       (SUM(hits)::float / NULLIF(SUM(atbat), 0) + (SUM(singles) + 2 * SUM(doubles) + 3 * SUM(triples) + 4 * SUM(homeruns))::float / NULLIF(SUM(atbat), 0)) as ops")
       .group("years").order("#{new_order} #{session[:current_sort_order]}")
