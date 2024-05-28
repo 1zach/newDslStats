@@ -13,21 +13,21 @@ class DslInfoController < ApplicationController
         # females = Player.where(gender: "f").joins(:stats)
         #females_single_season = Stat.joins(:player).where(player: { gender: "f" })
 
-        @games = players.group(:id).sort_by{ |player| -player.stats.sum("games") }
-        @games = @games.first(5)
+        def top_players_by_stat(players, stat)
+            players
+              .group(:id)
+              .sort_by { |player| -player.stats.sum(stat) }
+              .first(5)
+          end
         
-        @hits = players.group(:id)
-        @hits = @hits.sort_by{ |player| -player.stats.sum("hits")}
-        @hits = @hits.first(5)
-
-        @runs = players.group(:id).sort_by{ |player| -player.stats.sum("runs") }
-        @runs = @runs.first(5)
-
-        @homers = players.group(:id).sort_by{ |player| -player.stats.sum("homeruns") }
-        @homers = @homers.first(5)
-
-        @tb = players.group(:id).sort_by{ |player| -player.stats.sum("tb") }
-        @tb = @tb.first(5)
+          @hits = top_players_by_stat(players, "hits")
+          @games = top_players_by_stat(players, "games")
+          @runs = top_players_by_stat(players, "runs")
+          @homers = top_players_by_stat(players, "homeruns")
+          @tb = top_players_by_stat(players, "tb")
+          @doubles = top_players_by_stat(players, "doubles")
+          @triples = top_players_by_stat(players, "triples")
+        
 
         @avg = players.group(:id).having("stats.count > ?", 5).sort_by{|player| -average(player)}
         @avg = @avg.first(5)

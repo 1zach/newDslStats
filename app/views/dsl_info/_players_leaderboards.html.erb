@@ -1,118 +1,37 @@
 <div >
-      <table class ="w-80 bg-white tablesorter shadow rounded border-b border-gray-200">
-        <thead class = "bg-[#50AE26] text-white">
-        <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Rank</th>
-        <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Name</th>
-        <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Games</th>
-        <thead>
-        <tbody class = "text-gray-700">
-        <%@games.each_with_index do |player, index|%>
-        <tr class = "hover:bg-gray-200">
-        <td class = "text-left py-1 px-2"><%=index + 1%></td>
-        <td class="text-left py-1 px-2"><%=link_to player.name, player_path(player)%></td>
-        <td class="text-left py-1 px-2"><%=player.stats.sum(:games)%></td>
-        </tr>
-        <%end%>
-        </tbody>
-      </table>
-      <div class = "w-80 shadow bg-white rounded border-t border-gray-200 text-gray-400
-        text-center py-2"><%=link_to "Complete Games Leaders", stats_all_path(sort: "games", order: "asc", query_seasons: "6")%>
+      <div class="flex flex-col pb-3">
+        <%= render partial: 'players_individual_leaderboards', locals: { players: @games, stat_label: "Games", stat_column: :games, complete_stats_label: "Complete Games Leaders" } %>
       </div>
-    </div>
-    <div>
-      <table class ="w-80 bg-white tablesorter shadow rounded border-b border-gray-200">
-        <thead class = "bg-[#50AE26] text-white">
-        <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Rank</th>
-        <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Name</th>
-        <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Hits</th>
-        <thead>
-        <tbody class = "text-gray-700">
-        <%@hits.each_with_index do |player, index|%>
-        <tr class = "hover:bg-gray-200">
-        <td class = "text-left py-1 px-2"><%=index + 1%></td>
-        <td class="text-left py-1 px-2"><%=link_to player.name, player_path(player)%></td>
-        <td class="text-left py-1 px-2"><%=player.stats.sum(:hits)%></td>
-        </tr>
-        <%end%>
-        </tbody>
-      </table>
-      <div class = "w-80 shadow bg-white rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Complete Hits Leaders", stats_all_path(sort: "hits", order: "asc", query_seasons: "6")%></div>
-    </div>
-    <div>
-      <table class ="w-80 bg-white tablesorter shadow rounded border-b border-gray-200">
-        <thead class = "bg-[#50AE26] text-white">
-        <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Rank</th>
-        <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Name</th>
-        <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Runs</th>
-        <thead>
-        <tbody class = "text-gray-700">
-        <%@runs.each_with_index do |player, index|%>
-          <tr class = "hover:bg-gray-200">
-            <td class = "text-left py-1 px-2"><%=index + 1%></td>
-            <td class="text-left py-1 px-2"><%=link_to player.name, player_path(player)%></td>
-            <td class="text-left py-1 px-2"><%=player.stats.sum(:runs)%></td>
-          </tr>
-        <%end%>
-        </tbody>
-      </table>
-      <div class = "w-80 bg-white shadow rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Complete Runs Leaders", stats_all_path(sort: "runs", order: "asc", query_seasons: "6")%></div>
-    </div>
-  <div>
-    <table class ="w-80 bg-white tablesorter shadow rounded border-b border-gray-200">
-      <thead class = "bg-[#50AE26] text-white">
-      <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Rank</th>
-      <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Name</th>
-      <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">HR</th>
-      </thead>
-      <tbody class = "text-gray-700">
-      <%@homers.each_with_index do |player, index|%>
-        <tr class = "hover:bg-gray-200">
-          <td class = "text-left py-1 px-2"><%=index + 1%></td>
-          <td class="text-left py-1 px-2"><%=link_to player.name, player_path(player)%></td>
-          <td class="text-left py-1 px-2"><%=player.stats.sum(:homeruns)%></td>
-        </tr>
-      <%end%>
-      </tbody>
-    </table>
-    <div class = "w-80 bg-white shadow rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Complete Home Run Leaders", stats_all_path(sort: "homeruns", order: "asc", query_seasons: "6")%></div>
-  </div>
-  <div>
-  <table class ="w-80 bg-white tablesorter shadow rounded border-b border-gray-200">
-    <thead class = "bg-[#50AE26] text-white">
-    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Rank</th>
-    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Name</th>
-    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">TB</th>
-    <thead>
-    <tbody class = "text-gray-700">
-    <%@tb.each_with_index do |player, index|%>
-        <tr class = "hover:bg-gray-200">
-        <td class = "text-left py-1 px-2"><%=index + 1%></td>
-        <td class="text-left py-1 px-2"><%=link_to player.name, player_path(player)%></td>
-        <td class="text-left py-1 px-2"><%=player.stats.sum(:tb)%></td>
-    </tr>
-    <%end%>
-    </tbody>
-</table>
-    <div class = "w-80 bg-white shadow rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Complete Total Bases Leaders", stats_all_path(sort: "tb", order: "asc", query_seasons: "6")%></div>
 </div>
-<div>
-<table class ="w-80 bg-white tablesorter shadow rounded border-b border-gray-200">
-    <thead class = "bg-[#50AE26] text-white">
-    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Rank</th>
-    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Name</th>
-    <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Average</th>
-    <thead>
-    <tbody class = "text-gray-700">
-    <%@avg.each_with_index do |player, index|%>
-        <tr class = "hover:bg-gray-200">
-        <td class = "text-left py-1 px-2"><%=index + 1%></td>
-        <td class="text-left py-1 px-2"><%=link_to player.name, player_path(player)%></td>
-        <td class="text-left py-1 px-2"><%=number_with_precision(average(player), precision: 3)%></td>
-    </tr>
-    <%end%>
-    </tbody>
-</table>
-    <div class = "w-80 bg-white shadow rounded border-t border-gray-200 text-gray-400 text-center py-2"><%=link_to "Complete Average Leaders", stats_all_path(sort: "avg", order: "asc", query_seasons: "6")%></div>
+<div >
+      <div class="flex flex-col pb-3">
+        <%= render partial: 'players_individual_leaderboards', locals: { players: @hits, stat_label: "Hits", stat_column: :hits, complete_stats_label: "Complete Hits Leaders" } %>
+      </div>
+</div>
+<div >
+      <div class="flex flex-col pb-3">
+        <%= render partial: 'players_individual_leaderboards', locals: { players: @runs, stat_label: "Runs", stat_column: :runs, complete_stats_label: "Complete Runs Leaders" } %>
+      </div>
+</div>
+<div >
+      <div class="flex flex-col pb-3">
+        <%= render partial: 'players_individual_leaderboards', locals: { players: @homers, stat_label: "HR", stat_column: :homeruns, complete_stats_label: "Complete HR Leaders" } %>
+    </div>
+</div>
+<div >
+      <div class="flex flex-col pb-3">
+        <%= render partial: 'players_individual_leaderboards', locals: { players: @doubles, stat_label: "2B", stat_column: :doubles, complete_stats_label: "Complete 2B Leaders" } %>
+    </div>
+</div>
+<div >
+      <div class="flex flex-col pb-3">
+        <%= render partial: 'players_individual_leaderboards', locals: { players: @triples, stat_label: "3B", stat_column: :triples, complete_stats_label: "Complete 3B Leaders" } %>
+    </div>
+</div>
+<div >
+      <div class="flex flex-col pb-3">
+        <%= render partial: 'players_individual_leaderboards', locals: { players: @tb, stat_label: "TB", stat_column: :tb, complete_stats_label: "Complete TB Leaders" } %>
+    </div>
 </div>
 </div>
 

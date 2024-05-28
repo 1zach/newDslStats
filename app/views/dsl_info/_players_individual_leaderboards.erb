@@ -1,0 +1,21 @@
+<table class ="w-80 bg-white tablesorter shadow rounded border-b border-gray-200">
+        <thead class = "bg-[#50AE26] text-white">
+        <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Rank</th>
+        <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer">Name</th>
+        <th class = "text-left py-3 px-2 uppercase font-semibold text-sm hover:cursor-pointer"><%=stat_label%></th>
+        <thead>
+        <tbody class = "text-gray-700">
+        <%players.each_with_index do |player, index|%>
+        <tr class = "hover:bg-gray-200">
+        <td class = "text-left py-1 px-2"><%=index + 1%></td>
+        <td class="text-left py-1 px-2"><%=link_to player.name, player_path(player)%></td>
+        <td class="text-left py-1 px-2"><%=player.stats.sum(stat_column)%></td>
+        </tr>
+        <%end%>
+        </tbody>
+      </table>
+      <div class = "w-80 shadow bg-white rounded border-t border-gray-200 text-gray-400
+        text-center py-2"><%= link_to complete_stats_label, stats_all_path(sort: stat_column, order: "asc", query_seasons: "6") %>
+      </div>
+   
+    
