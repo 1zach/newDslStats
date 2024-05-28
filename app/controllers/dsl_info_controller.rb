@@ -8,7 +8,7 @@ class DslInfoController < ApplicationController
             single_season_player = Stat.joins(:player).where(player: { gender: "m"})
         else
            players = Player.where(gender: "m").joins(:stats)
-           single_season_player = Stat.joins(:player).where(player: {gender: "f"})
+           single_season_player = Stat.joins(:player).where(player: {gender: "m"})
         end
         # females = Player.where(gender: "f").joins(:stats)
         #females_single_season = Stat.joins(:player).where(player: { gender: "f" })
@@ -29,7 +29,7 @@ class DslInfoController < ApplicationController
         @tb = players.group(:id).sort_by{ |player| -player.stats.sum("tb") }
         @tb = @tb.first(5)
 
-        @avg = players.group(:id).having("stats.count > ?", 3).sort_by{|player| -average(player)}
+        @avg = players.group(:id).having("stats.count > ?", 5).sort_by{|player| -average(player)}
         @avg = @avg.first(5)
         
         @singlehits = single_season_player.sort_by{|stat| -stat.hits}
