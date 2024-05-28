@@ -1,23 +1,10 @@
-<%= form_with url: eras_path, method: :get, class: "d-flex flex-wrap pb-2 items-baseline", data: {"turbo": false} do %>
-  <label for="Year" class = "px-3">Years</label>
+<%= form_with url: eras_path, method: :get, class: "d-flex flex-wrap pb-2 items-baseline", data: { "turbo": false } do |form| %>
+  <label for="Year" class="px-3">Years</label>
   <div class="relative inline-flex self-center flex-wrap">
-    <%= check_box_tag "years[]", "2015"%>
-    <%= label_tag "2015", "2015", class: "pl-2 pr-2"%>
-    <%= check_box_tag"years[]", "2016" %>
-    <%= label_tag "2016", "2016", class: "pl-2 pr-2" %>
-    <%= check_box_tag "years[]", "2017" %>
-    <%= label_tag "2017", "2017", class: "pl-2 pr-2" %>
-    <%= check_box_tag "years[]", "2018" %>
-    <%= label_tag"2018", "2018", class: "pl-2 pr-2" %>
-    <%= check_box_tag "years[]", "2019" %>
-    <%= label_tag "2019", "2019", class: "pl-2 pr-2" %>
-    <%= check_box_tag "years[]", "2020" %>
-    <%= label_tag "2020", "2020", class: "pl-2 pr-2" %>
-    <%= check_box_tag "years[]", "2021" %>
-    <%= label_tag "2021", "2021", class: "pl-2 pr-2" %>
-    <%= check_box_tag "years[]", "2022" %>
-    <%= label_tag "2022", "2022", class: "pl-2 pr-2" %>
-    <%= check_box_tag "years[]", "2023" %>
-    <%= label_tag "2023", "2023", class: "pl-2 pr-2" %>
-    <%= submit_tag "Search", class: "mx-3 px-2 border-1 bg-[#50AE26] border-gray-800 hover:bg-gray-600 text-white"%>
-  <% end %>
+    <% Season.distinct.order(year: :asc).pluck(:year).each do |year| %>
+      <%= form.check_box :years, { multiple: true, checked: (params[:years] || []).include?(year.to_s), id: "year_#{year}" }, year, nil %>
+      <%= form.label "year_#{year}", year, class: "pl-2 pr-2" %>
+    <% end %>
+    <%= form.submit "Search", class: "mx-3 px-2 border-1 bg-[#50AE26] border-gray-800 hover:bg-gray-600 text-white" %>
+  </div>
+<% end %>

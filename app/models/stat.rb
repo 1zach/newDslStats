@@ -2,7 +2,7 @@ class Stat < ApplicationRecord
    belongs_to :player
    belongs_to :season
    belongs_to :team
-   belongs_to :coach
+   has_one :coach, through: :team
 
 
    def self.search_by_player_name(query)

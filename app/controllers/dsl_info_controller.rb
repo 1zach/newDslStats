@@ -7,7 +7,7 @@ class DslInfoController < ApplicationController
             players = Player.where(gender: "m").joins(:stats)
             single_season_player = Stat.joins(:player).where(player: { gender: "m"})
         else
-           players = Player.where(gender: "f").joins(:stats)
+           players = Player.where(gender: "m").joins(:stats)
            single_season_player = Stat.joins(:player).where(player: {gender: "f"})
         end
         # females = Player.where(gender: "f").joins(:stats)

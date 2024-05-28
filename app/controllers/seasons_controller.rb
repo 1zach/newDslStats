@@ -4,7 +4,7 @@ class SeasonsController < ApplicationController
         if params[:years]
         @players = Stat.where("years = ?", params[:years])
         else
-        @players = Stat.where("years = ?", 2023)
+        @players = Stat.where("years = ?", 2024)
         end
           if params[:sort] == nil
             @players = @players.sort_by{ |player| player.player.name}

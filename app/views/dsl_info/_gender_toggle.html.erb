@@ -13,7 +13,7 @@
 document.addEventListener('turbo:load', function() {
   const genderToggle = document.getElementById('gender_toggle');
   const genderForm = document.getElementById('gender_form')
-  const storedGender = localStorage.getItem('selectedGender') || 'female';
+  const storedGender = localStorage.getItem('selectedGender') || 'male';
  
   genderToggle.checked = storedGender === 'male';
 
